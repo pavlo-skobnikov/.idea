@@ -134,11 +134,28 @@ let g:WhichKeyDesc_GotoPreviousError = "[d Previous diagnostic"
 nnoremap [d :action GotoPreviousError<CR>
 
 " Go to LSP capability actions
-let g:WhichKeyDesc_CallHierarchy = "gO Search outgoing calls"
-nnoremap gO :action CallHierarchy<CR>
+let g:WhichKeyDesc_GotoLspActions = "gl +lsp"
 
-let g:WhichKeyDesc_CallHierarchy = "gI Search incoming calls"
-nnoremap gI :action CallHierarchy<CR>
+let g:WhichKeyDesc_GotoTypeDeclaration = "glt Go to type definition"
+nnoremap glt :action GotoTypeDeclaration<CR>
+
+let g:WhichKeyDesc_GotoClass = "glc Go to Class"
+nnoremap glc :action GotoClass<CR>
+
+let g:WhichKeyDesc_GotoSuperMethod = "gls Go to super"
+nnoremap gls :action GotoSuperMethod<CR>
+
+let g:WhichKeyDesc_GotoImplementation = "gli Go to implementation"
+nnoremap gli :action GotoImplementation<CR>
+
+let g:WhichKeyDesc_GotoTest = "glS Go to test suite"
+nnoremap glS :action GotoTest<CR>
+
+let g:WhichKeyDesc_CallHierarchy = "glC Call hierarchy"
+nnoremap glC :action CallHierarchy<CR>
+
+let g:WhichKeyDesc_TypeHierarchy = "glT Type hierarchy"
+nnoremap glT :action TypeHierarchy<CR>
 
 " Refactor LSP capability actions
 let g:WhichKeyDesc_ShowIntentionActions = "<leader>ra Code actions"
@@ -150,26 +167,26 @@ nnoremap <leader>rl :action Refactorings.QuickListPopupAction<CR>
 let g:WhichKeyDesc_RenameElement = "<leader>rn Rename"
 nnoremap <leader>rn :action RenameElement<CR>
 
-let g:WhichKeyDesc_HigHligHtUsagesInFile = "<leader>rh Highlight symbol"
+let g:WhichKeyDesc_HighlightUsagesInFile = "<leader>rh Highlight symbol"
 nnoremap <leader>rh :action HighlightUsagesInFile<CR>
 
 let g:WhichKeyDesc_ShowErrorDescription = "<leader>rf Open float"
 nnoremap <leader>rf :action ShowErrorDescription<CR>
 
-let g:WhichKeyDesc_GotoTypeDeclaration = "<leader>rt Go to type definition"
-nnoremap <leader>rt :action GotoTypeDeclaration<CR>
-
-let g:WhichKeyDesc_GotoImplementation = "<leader>ri Go to implementation"
-nnoremap <leader>ri :action GotoImplementation<CR>
-
-let g:WhichKeyDesc_FindUsages = "<leader>rr Go to references"
+let g:WhichKeyDesc_FindUsages = "<leader>rr Search references"
 nnoremap <leader>rr :action FindUsages<CR>
 
-let g:WhichKeyDesc_FileStructurePopup = "<leader>rs Search document symbols"
-nnoremap <leader>rs :action FileStructurePopup<CR>
+let g:WhichKeyDesc_FileStructurePopup = "<leader>rd Search document symbols"
+nnoremap <leader>rd :action FileStructurePopup<CR>
 
 let g:WhichKeyDesc_GotoSymbol = "<leader>rw Search workspace symbols"
 nnoremap <leader>rw :action GotoSymbol<CR>
+
+let g:WhichKeyDesc_Generate = "<leader>rg Generate"
+nnoremap <leader>rg :action Generate<CR>
+
+let g:WhichKeyDesc_OptimizeImports = "<leader>ro Organize imports"
+nnoremap <leader>ro :action OptimizeImports<CR>
 
 "" COPILOT
 let g:WhichKeyDesc_CopilotChatShow = "<leader>c Show Copilot chat"
@@ -365,17 +382,8 @@ nnoremap yop :action TogglePowerSave<CR>
 " Major (basically, Intellij-specific functionality)
 let g:WhichKeyDesc_Major = "<leader>m +major"
 
-let g:WhichKeyDesc_GotoClass = "<leader>mc Go to Class"
-nnoremap <leader>mc :action GotoClass<CR>
-
 let g:WhichKeyDesc_CodeCleanup = "<leader>mC Clean code up"
 nnoremap <leader>mC :action CodeCleanup<CR>
-
-let g:WhichKeyDesc_Generate = "<leader>mg Generate"
-nnoremap <leader>mg :action Generate<CR>
-
-let g:WhichKeyDesc_TypeHierarchy = "<leader>mh Inheritance hierarchy"
-nnoremap <leader>mh :action TypeHierarchy<CR>
 
 let g:WhichKeyDesc_InspectCode = "<leader>mi Inspect Code"
 nnoremap <leader>mi :action InspectCode<CR>
@@ -383,20 +391,11 @@ nnoremap <leader>mi :action InspectCode<CR>
 let g:WhichKeyDesc_NewElement = "<leader>mn Create a new element"
 nnoremap <leader>mn :action NewElement<CR>
 
-let g:WhichKeyDesc_OptimizeImports = "<leader>mo Organize imports"
-nnoremap <leader>mo :action OptimizeImports<CR>
-
 let g:WhichKeyDesc_ReplaceInPath = "<leader>mp Replace in project"
 nnoremap <leader>mp :action ReplaceInPath<CR>
 
 let g:WhichKeyDesc_RenameFile = "<leader>mR Rename file"
 nnoremap <leader>mR :action RenameFile<CR>
-
-let g:WhichKeyDesc_GotoSuperMethod = "<leader>ms Go to super"
-nnoremap <leader>ms :action GotoSuperMethod<CR>
-
-let g:WhichKeyDesc_GotoTest = "<leader>mt Go to Test/Implementation"
-nnoremap <leader>mt :action GotoTest<CR>
 
 " Running
 let g:WhichKeyDesc_MajorRun = "<leader>mr +run"
