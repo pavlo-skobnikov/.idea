@@ -139,23 +139,11 @@ let g:WhichKeyDesc_GotoLspActions = "gl +lsp"
 let g:WhichKeyDesc_GotoTypeDeclaration = "glt Go to type definition"
 nnoremap glt :action GotoTypeDeclaration<CR>
 
-let g:WhichKeyDesc_GotoClass = "glc Go to Class"
-nnoremap glc :action GotoClass<CR>
-
-let g:WhichKeyDesc_GotoSuperMethod = "gls Go to super"
-nnoremap gls :action GotoSuperMethod<CR>
-
 let g:WhichKeyDesc_GotoImplementation = "gli Go to implementation"
 nnoremap gli :action GotoImplementation<CR>
 
-let g:WhichKeyDesc_GotoTest = "glS Go to test suite"
-nnoremap glS :action GotoTest<CR>
-
-let g:WhichKeyDesc_CallHierarchy = "glC Call hierarchy"
-nnoremap glC :action CallHierarchy<CR>
-
-let g:WhichKeyDesc_TypeHierarchy = "glT Type hierarchy"
-nnoremap glT :action TypeHierarchy<CR>
+let g:WhichKeyDesc_GotoSuperMethod = "gls Go to super"
+nnoremap gls :action GotoSuperMethod<CR>
 
 " Refactor LSP capability actions
 let g:WhichKeyDesc_ShowIntentionActions = "<leader>ra Code actions"
@@ -197,9 +185,6 @@ let g:WhichKeyDesc_Debug = "<leader>d +debug"
 
 let g:WhichKeyDesc_ActivateDebugToolWindow = "<leader>dd DAP UI"
 nnoremap <leader>dd :action ActivateDebugToolWindow<CR>
-
-let g:WhichKeyDesc_KotlinConsoleREPL = "<leader>do Open REPL"
-nnoremap <leader>do :action KotlinConsoleREPL<CR>
 
 " Debug Run/Continue mappings
 let g:WhichKeyDesc_RunMappings = "<leader>dr +run"
@@ -256,31 +241,8 @@ let g:WhichKeyDesc_GotoAction = "<leader>fc Command && run"
 nnoremap <leader>fc :action GotoAction<CR>
 
 " Git
-let g:WhichKeyDesc_Git = "<leader>g +git"
-
-let g:WhichKeyDesc_Vcs_QuickListPopupAction = "<leader>ga Actions"
-nnoremap <leader>ga :action Vcs.QuickListPopupAction<CR>
-
-let g:WhichKeyDesc_Git_Branches = "<leader>gb Branches"
-nnoremap <leader>gb :action Git.Branches<CR>
-
-let g:WhichKeyDesc_Vcs_Show_Local_Changes = "<leader>gg Changes"
-nnoremap <leader>gg :action Vcs.Show.Local.Changes<CR>
-
-let g:WhichKeyDesc_Vcs_Show_Log = "<leader>gl Log"
-nnoremap <leader>gl :action Vcs.Show.Log<CR>
-
-let g:WhichKeyDesc_Vcs_ShowTabbedFileHistory = "<leader>gh File history"
-nnoremap <leader>gh :action Vcs.ShowTabbedFileHistory<CR>
-
-let g:WhichKeyDesc_Vcs_Show_Shelf = "<leader>gs Stash"
-nnoremap <leader>gs :action Vcs.Show.Shelf<CR>
-
-let g:WhichKeyDesc_Vcs_Push = "<leader>gp Push"
-nnoremap <leader>gp :action Vcs.Push<cr>
-
-let g:WhichKeyDesc_Vcs_UpdateProject = "<leader>gu Pull"
-nnoremap <leader>gu :action Vcs.UpdateProject<CR>
+let g:WhichKeyDesc_Vcs_Show_Local_Changes = "<leader>g Changes"
+nnoremap <leader>g :action Vcs.Show.Local.Changes<CR>
 
 " Hunks
 let g:WhichKeyDesc_RightSquareBracket_VcsShowNextChangeMarker = "]c Next change"
@@ -291,132 +253,9 @@ nnoremap [c :action VcsShowPrevChangeMarker<CR>
 
 let g:WhichKeyDesc_Hunks = "<leader>h +hunks"
 
-let g:WhichKeyDesc_Hunks_RollbackChangedLines = "<leader>hh Reset hunk"
-nnoremap <leader>hh :action Vcs.RollbackChangedLines<CR>
-vnoremap <leader>hh :action Vcs.RollbackChangedLines<CR>
-
-" Configure
-let g:WhichKeyDesc_Help = "<leader>C +configure"
-
-let g:WhichKeyDesc_Help_InspectionSettings = "<leader>Ci Open inspection settings"
-nnoremap <leader>Ci :action PopupHector<CR>
-
-let g:WhichKeyDesc_WelcomeScreen_DevelopPlugins = "<leader>Cp JetBrains plugins repository"
-nnoremap <leader>Cp :action WelcomeScreen.DevelopPlugins<CR>
-
-let g:WhichKeyDesc_ReloadIdeaVimRc = "<leader>Cr Reload .ideavimrc"
-nnoremap <leader>Cr :source ~/.ideavimrc<CR>
-
-" Workspaces
-let g:WhichKeyDesc_Workspaces = "<leader>w +workspaces"
-
-let g:WhichKeyDesc_NextProjectWindow = "<leader>wn Focus next project"
-nnoremap <leader>wn :action NextProjectWindow<CR>
-
-let g:WhichKeyDesc_PreviousProjectWindow = "<leader>wp Focus previous project"
-nnoremap <leader>wp :action PreviousProjectWindow<CR>
-
-let g:WhichKeyDesc_InvalidateCaches = "<leader>wi Invalidate cache"
-nnoremap <leader>wi :action InvalidateCaches<CR>
-
-let g:WhichKeyDesc_ManageRecentProjects = "<leader>wr Recent projects"
-nnoremap <leader>wr :action ManageRecentProjects<CR>
-
-let g:WhichKeyDesc_NewProject = "<leader>wA Create new project"
-nnoremap <leader>wA :action NewProject<CR>
-
-let g:WhichKeyDesc_ImportProject = "<leader>wI Import project from existing files"
-nnoremap <leader>wI :action ImportProject<CR>
-
-let g:WhichKeyDesc_ProjectFromVersionControl = "<leader>wG New project from VCS"
-nnoremap <leader>wG :action ProjectFromVersionControl<CR>
-
-let g:WhichKeyDesc_CloseOtherProjects = "<leader>wO Close all other projects"
-nnoremap <leader>wO :action CloseOtherProjects<CR>
-
-let g:WhichKeyDesc_CloseProject = "<leader>wq Close this project"
-nnoremap <leader>wq :action CloseProject<CR>
-
-let g:WhichKeyDesc_CloseAllProjects = "<leader>wQ Close all projects"
-nnoremap <leader>wQ :action CloseAllProjects<CR>
-
-let g:WhichKeyDesc_Exit = "<leader>wE Exit"
-nnoremap <leader>wE :action Exit<CR>
-
-let g:WhichKeyDesc_RestartIde = "<leader>wR Restart"
-nnoremap <leader>wR :action RestartIde<CR>
-
-" Toggles
-let g:WhichKeyDesc_Toggle = "yo +toggle"
-
-let g:WhichKeyDesc_EnableCopilot = "yoc Enable Copilot"
-nnoremap yoc :action copilot.enableCopilot<CR>
-
-let g:WhichKeyDesc_DisableCopilot = "yoC Disable Copilot"
-nnoremap yoC :action copilot.disableCopilot<CR>
-
-let g:WhichKeyDesc_Annotate = "yog Toggle Blame"
-nnoremap yog :action Annotate<CR>
-
-let g:WhichKeyDesc_EditorToggleShowIndentLines = "yoi Toggle show indent guide"
-nnoremap yoi :action EditorToggleShowIndentLines<CR>
-
-let g:WhichKeyDesc_EditorToggleUseSoftWraps = "yow Toggle line wrapping"
-nnoremap yow :action EditorToggleUseSoftWraps<CR>
-
-let g:WhichKeyDesc_EditorToggleShowLineNumbers = "yon Toggle line numbers"
-nnoremap yon :action EditorToggleShowLineNumbers<CR>
-
-let g:WhichKeyDesc_Toggles_RelativeLineNumbers = "yor Toggle relative line numbers"
-nnoremap yor :set relativenumber!<CR>
-
-let g:WhichKeyDesc_EditorToggleShowWhitespaces = "yow Toggle show whitespaces"
-nnoremap yow :action EditorToggleShowWhitespaces<CR>
-
-let g:WhichKeyDesc_EditorToggleShowGutterIcons = "yoG Toggle gutter icons"
-nnoremap yoG :action EditorToggleShowGutterIcons<CR>
-
-let g:WhichKeyDesc_TogglePowerSave = "yop Toggle power save"
-nnoremap yop :action TogglePowerSave<CR>
-
-" Major (basically, Intellij-specific functionality)
-let g:WhichKeyDesc_Major = "<leader>m +major"
-
-let g:WhichKeyDesc_CodeCleanup = "<leader>mC Clean code up"
-nnoremap <leader>mC :action CodeCleanup<CR>
-
-let g:WhichKeyDesc_InspectCode = "<leader>mi Inspect Code"
-nnoremap <leader>mi :action InspectCode<CR>
-
-let g:WhichKeyDesc_NewElement = "<leader>mn Create a new element"
-nnoremap <leader>mn :action NewElement<CR>
-
-let g:WhichKeyDesc_ReplaceInPath = "<leader>mp Replace in project"
-nnoremap <leader>mp :action ReplaceInPath<CR>
-
-let g:WhichKeyDesc_RenameFile = "<leader>mR Rename file"
-nnoremap <leader>mR :action RenameFile<CR>
-
-" Running
-let g:WhichKeyDesc_MajorRun = "<leader>mr +run"
-
-let g:WhichKeyDesc_Run = "<leader>mrr Run Current Configuration"
-nnoremap <leader>mrr :action Run<CR>
-
-let g:WhichKeyDesc_RunAnything = "<leader>mra Run anything"
-nnoremap <leader>mra :action RunAnything<CR>
-
-let g:WhichKeyDesc_RunClass = "<leader>mrc Run under cursor"
-nnoremap <leader>mrc :action RunClass<CR>
-
-let g:WhichKeyDesc_Stop = "<leader>mrk Kill application"
-nnoremap <leader>mrk :action Stop<CR>
-
-let g:WhichKeyDesc_RerunTests = "<leader>mrt Re-run tests"
-nnoremap <leader>mrt :action RerunTests<CR>
-
-let g:WhichKeyDesc_ChooseRunConfiguration = "<leader>mrs Select configuration and run"
-nnoremap <leader>mrs :action ChooseRunConfiguration<CR>
+let g:WhichKeyDesc_Hunks_RollbackChangedLines = "<leader>hr Reset hunk"
+nnoremap <leader>hr :action Vcs.RollbackChangedLines<CR>
+vnoremap <leader>hr :action Vcs.RollbackChangedLines<CR>
 
 " Harpoon
 let g:WhichKeyDesc_AddToHarpoon = "<leader>a Add to Harpoon"
