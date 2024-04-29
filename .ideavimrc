@@ -88,50 +88,66 @@ nnoremap c<space> f<space>diwi<space>
 
 " Deleting and pasting without replacing the unnamed register
 let g:WhichKeyDesc_DeleteWithoutCopy = "<leader>d Delete without copying"
-vnoremap <leader>d "_d
+vnoremap <leader>D "_d
 
 let g:WhichKeyDesc_PasteWithoutCopy = "<leader>p Paste without copying"
-nnoremap <leader>p "_dP
+nnoremap <leader>P "_dP
 
 " Explorer
 nnoremap - :action SelectInProjectView<CR>
 
-" COMMENT
-let g:WhichKeyDesc_CommentByBlockComment = "gb Comment by Block Comment"
+" Comment
+let g:WhichKeyDesc_CommentByBlockComment = "gb Comment by block comment"
 nnoremap gb :action CommentByBlockComment<CR>
 vnoremap gb :action CommentByBlockComment<CR>
 
-let g:WhichKeyDesc_CommentByLineComment = "gc Comment by Line Comment"
+let g:WhichKeyDesc_CommentByLineComment = "gc Comment by line comment"
 nnoremap gc :action CommentByLineComment<CR>
 vnoremap gc :action CommentByLineComment<CR>
 
-" [] CODE NAVIGATION
-let g:WhichKeyDesc_MethodUp = "[f Previous Function"
+"" [] NAVIGATION
+let g:WhichKeyDesc_MethodUp = "[f Previous function"
 nnoremap [f :action MethodUp<CR>
 
-let g:WhichKeyDesc_MethodDown = "]f Next Function"
+let g:WhichKeyDesc_MethodDown = "]f Next function"
 nnoremap ]f :action MethodDown<CR>
 
-" <leader> MISCELLANEOUS
-let g:WhichKeyDesc_ReformatCode = "<leader>= Reformat Code"
-nnoremap <leader>= :action ReformatCode<CR>
-vnoremap <leader>= :action ReformatCode<CR>
-
-let g:WhichKeyDesc_HideAllWindows - "<leader>- Hide All Tool Windows"
-nnoremap <leader>- :action HideAllWindows<CR>
-
-" LSP
-
-" Get Minimal Parameter Info
-nnoremap <C-S-k> :action ParameterInfo<CR>
-inoremap <C-S-k> :action ParameterInfo<CR>
-
-" Next/Previous Diagnostic
 let g:WhichKeyDesc_GotoNextError = "]d Next diagnostic"
 nnoremap ]d :action GotoNextError<CR>
 
 let g:WhichKeyDesc_GotoPreviousError = "[d Previous diagnostic"
 nnoremap [d :action GotoPreviousError<CR>
+
+let g:WhichKeyDesc_RightSquareBracket_VcsShowNextChangeMarker = "]c Next change"
+nnoremap ]c :action VcsShowNextChangeMarker<CR>
+
+let g:WhichKeyDesc_LeftSquareBracket_VcsShowPrevChangeMarker = "[c Previous change"
+nnoremap [c :action VcsShowPrevChangeMarker<CR>
+
+"" <leader> Actions
+let g:WhichKeyDesc_ReformatCode = "<leader>= Reformat code"
+nnoremap <leader>= :action ReformatCode<CR>
+vnoremap <leader>= :action ReformatCode<CR>
+
+let g:WhichKeyDesc_HideAllWindows = "<leader>- Hide All tool windows"
+nnoremap <leader>- :action HideAllWindows<CR>
+
+let g:WhichKeyDesc_AnalyzeActions = "<leader>A Analyze actions"
+nnoremap <leader>A :action AnalyzeActions<CR>
+
+let g:WhichKeyDesc_RunnerActions = "<leader>R Runner actions"
+nnoremap <leader>R :action RunnerActions<CR>
+
+let g:WhichKeyDesc_DebuggingActionsGroup = "<leader>d Debugging actions group"
+nnoremap <leader>d :action DebuggingActionsGroup<CR>
+
+let g:WhichKeyDesc_BreakpointActionsGroup = "<leader>D Breakpoint actions group"
+nnoremap <leader>D :action BreakpointActionsGroup<CR>
+
+"" LSP
+" Get function parameter info
+nnoremap <c-s> :action ParameterInfo<CR>
+inoremap <c-s> :action ParameterInfo<CR>
 
 " Go to LSP capability actions
 let g:WhichKeyDesc_GotoLspActions = "gl +lsp"
@@ -145,11 +161,11 @@ nnoremap gli :action GotoImplementation<CR>
 let g:WhichKeyDesc_GotoSuperMethod = "gls Go to super"
 nnoremap gls :action GotoSuperMethod<CR>
 
-" Refactor LSP capability actions
-let g:WhichKeyDesc_ShowIntentionActions = "<leader>ra Code actions"
+" Refactor-ish LSP capability actions
+let g:WhichKeyDesc_ShowIntentionActions = "<leader>ra Contextual actions"
 nnoremap <leader>ra :action ShowIntentionActions<CR>
 
-let g:WhichKeyDesc_Refactorings_QuickListPopupAction = "<leader>rl Code lens"
+let g:WhichKeyDesc_Refactorings_QuickListPopupAction = "<leader>rq Quick actions"
 nnoremap <leader>rl :action Refactorings.QuickListPopupAction<CR>
 
 let g:WhichKeyDesc_RenameElement = "<leader>rn Rename"
@@ -176,88 +192,24 @@ nnoremap <leader>rg :action Generate<CR>
 let g:WhichKeyDesc_OptimizeImports = "<leader>ro Organize imports"
 nnoremap <leader>ro :action OptimizeImports<CR>
 
-"" COPILOT
-let g:WhichKeyDesc_CopilotChatShow = "<leader>c Show Copilot chat"
-nnoremap <leader>c :action copilot.chat.show<CR>
+"" Find/Search
+let g:WhichKeyDesc_GotoFile = "<leader>f Find files"
+nnoremap <leader>f :action GotoFile<CR>
 
-"" Debug
-let g:WhichKeyDesc_Debug = "<leader>d +debug"
+let g:WhichKeyDesc_RecentFiles = "<leader>F Recent files"
+nnoremap <leader>F :action RecentFiles<CR>
 
-let g:WhichKeyDesc_ActivateDebugToolWindow = "<leader>dd DAP UI"
-nnoremap <leader>dd :action ActivateDebugToolWindow<CR>
+let g:WhichKeyDesc_FindInPath = "<leader>/ Search in files"
+nnoremap <leader>/ :action FindInPath<CR>
 
-" Debug Run/Continue mappings
-let g:WhichKeyDesc_RunMappings = "<leader>dr +run"
+"" Git
+let g:WhichKeyDesc_ChangesView_ToggleCommitUi = "<leader>g Git changes"
+nnoremap <leader>g :action ChangesView.ToggleCommitUi<CR>
 
-let g:WhichKeyDesc_Continue = "<leader>drc Continue"
-nnoremap <leader>drc :action Debug<CR>
+let g:WhichKeyDesc_GitRepositoryActions = "<leader>G Git repository actions"
+nnoremap <leader>G :action GitRepositoryActions<CR>
 
-" Debug Step mappings
-let g:WhichKeyDesc_DebugStepMappings = "<leader>ds +step"
-
-let g:WhichKeyDesc_RunToCursor = "<leader>dsn Run to cursor"
-nnoremap <leader>dsc :action RunToCursor<CR>
-
-let g:WhichKeyDesc_StepOver = "<leader>dsn Step next"
-nnoremap <leader>dsn :action StepOver<CR>
-
-let g:WhichKeyDesc_StepInto = "<leader>dsi Step into"
-nnoremap <leader>dsi :action StepInto<CR>
-
-let g:WhichKeyDesc_StepOut = "<leader>dso Step out"
-nnoremap <leader>dso :action StepOut<CR>
-
-" Debug Breakpoint mappings
-let g:WhichKeyDesc_DebugBreakpointMappings = "<leader>db +breakpoint"
-
-let g:WhichKeyDesc_AddBreakpoint = "<leader>dbb Toggle breakpoint"
-nnoremap <leader>dbb :action AddBreakpoint<CR>
-
-let g:WhichKeyDesc_RemoveAllBreakpointsInFile = "<leader>dbr Remove all breakpoints in file"
-nnoremap <leader>dbr :action Debugger.RemoveAllBreakpointsInFile<CR>
-
-let g:WhichKeyDesc_AddConditionalBreakpoint = "<leader>dbc Toggle conditional breakpoint"
-nnoremap <leader>dbc :action AddConditionalBreakpoint<CR>
-
-" Debug Find mappings
-let g:WhichKeyDesc_DebugFind = "<leader>df +find"
-
-let g:WhichKeyDesc_ViewBreakpoints = "<leader>dfb Breakpoints"
-nnoremap <leader>dfb :action ViewBreakpoints<CR>
-
-" Find
-let g:WhichKeyDesc_Find = "<leader>f +find"
-
-let g:WhichKeyDesc_GotoFile = "<leader>ff All files"
-nnoremap <leader>ff :action GotoFile<CR>
-
-let g:WhichKeyDesc_RecentFiles = "<leader>fF Recent files"
-nnoremap <leader>fF :action RecentFiles<CR>
-
-let g:WhichKeyDesc_FindInPath = "<leader>fg grep"
-nnoremap <leader>fg :action FindInPath<CR>
-
-let g:WhichKeyDesc_GotoAction = "<leader>fc Command && run"
-nnoremap <leader>fc :action GotoAction<CR>
-
-" Git
-let g:WhichKeyDesc_Vcs_Show_Local_Changes = "<leader>g Changes"
-nnoremap <leader>g :action Vcs.Show.Local.Changes<CR>
-
-" Hunks
-let g:WhichKeyDesc_RightSquareBracket_VcsShowNextChangeMarker = "]c Next change"
-nnoremap ]c :action VcsShowNextChangeMarker<CR>
-
-let g:WhichKeyDesc_LeftSquareBracket_VcsShowPrevChangeMarker = "[c Previous change"
-nnoremap [c :action VcsShowPrevChangeMarker<CR>
-
-let g:WhichKeyDesc_Hunks = "<leader>h +hunks"
-
-let g:WhichKeyDesc_Hunks_RollbackChangedLines = "<leader>hr Reset hunk"
-nnoremap <leader>hr :action Vcs.RollbackChangedLines<CR>
-vnoremap <leader>hr :action Vcs.RollbackChangedLines<CR>
-
-" Harpoon
+"" Harpoon
 let g:WhichKeyDesc_AddToHarpoon = "<leader>a Add to Harpoon"
 nnoremap <leader>a :action AddToHarpoon<CR>
 
@@ -275,6 +227,3 @@ nnoremap g3 :action GotoHarpoon3<CR>
 
 let g:WhichKeyDesc_GotoHarpoon4 = "g4 Go to Harpoon 4"
 nnoremap g4 :action GotoHarpoon4<CR>
-
-let g:WhichKeyDesc_GotoHarpoon5 = "g5 Go to Harpoon 5"
-nnoremap g5 :action GotoHarpoon5<CR>
