@@ -150,6 +150,9 @@ nnoremap <c-s> :action ParameterInfo<CR>
 inoremap <c-s> :action ParameterInfo<CR>
 
 " Go to LSP capability actions
+let g:WhichKeyDesc_FindUsages = "gr References"
+nnoremap gr :action FindUsages<CR>
+
 let g:WhichKeyDesc_GotoLspActions = "gl +lsp"
 
 let g:WhichKeyDesc_GotoTypeDeclaration = "glt Go to type definition"
@@ -161,36 +164,35 @@ nnoremap gli :action GotoImplementation<CR>
 let g:WhichKeyDesc_GotoSuperMethod = "gls Go to super"
 nnoremap gls :action GotoSuperMethod<CR>
 
+let g:WhichKeyDesc_FileStructurePopup = "gld Search document symbols"
+nnoremap gld :action FileStructurePopup<CR>
+
+let g:WhichKeyDesc_GotoSymbol = "glw Search workspace symbols"
+nnoremap glw :action GotoSymbol<CR>
+
 " Refactor-ish LSP capability actions
-let g:WhichKeyDesc_ShowIntentionActions = "<leader>ra Contextual actions"
-nnoremap <leader>ra :action ShowIntentionActions<CR>
+let g:WhichKeyDesc_Refactor = "cr +refactor"
 
-let g:WhichKeyDesc_Refactorings_QuickListPopupAction = "<leader>rq Quick actions"
-nnoremap <leader>rl :action Refactorings.QuickListPopupAction<CR>
+let g:WhichKeyDesc_ShowIntentionActions = "crr Refactor actions"
+nnoremap crr :action ShowIntentionActions<CR>
 
-let g:WhichKeyDesc_RenameElement = "<leader>rn Rename"
-nnoremap <leader>rn :action RenameElement<CR>
+let g:WhichKeyDesc_Refactorings_QuickListPopupAction = "crl Code lens"
+nnoremap crl :action Refactorings.QuickListPopupAction<CR>
 
-let g:WhichKeyDesc_HighlightUsagesInFile = "<leader>rh Highlight symbol"
-nnoremap <leader>rh :action HighlightUsagesInFile<CR>
+let g:WhichKeyDesc_RenameElement = "crn Rename"
+nnoremap crn :action RenameElement<CR>
 
-let g:WhichKeyDesc_ShowErrorDescription = "<leader>rf Open float"
-nnoremap <leader>rf :action ShowErrorDescription<CR>
+let g:WhichKeyDesc_Generate = "crg Generate"
+nnoremap crg :action Generate<CR>
 
-let g:WhichKeyDesc_FindUsages = "<leader>rr Search references"
-nnoremap <leader>rr :action FindUsages<CR>
+let g:WhichKeyDesc_HighlightUsagesInFile = "crh Highlight symbol"
+nnoremap crh :action HighlightUsagesInFile<CR>
 
-let g:WhichKeyDesc_FileStructurePopup = "<leader>rd Search document symbols"
-nnoremap <leader>rd :action FileStructurePopup<CR>
+let g:WhichKeyDesc_ShowErrorDescription = "crf Open float"
+nnoremap crf :action ShowErrorDescription<CR>
 
-let g:WhichKeyDesc_GotoSymbol = "<leader>rw Search workspace symbols"
-nnoremap <leader>rw :action GotoSymbol<CR>
-
-let g:WhichKeyDesc_Generate = "<leader>rg Generate"
-nnoremap <leader>rg :action Generate<CR>
-
-let g:WhichKeyDesc_OptimizeImports = "<leader>ro Organize imports"
-nnoremap <leader>ro :action OptimizeImports<CR>
+let g:WhichKeyDesc_OptimizeImports = "cro Organize imports"
+nnoremap cro :action OptimizeImports<CR>
 
 "" Find/Search
 let g:WhichKeyDesc_GotoFile = "<leader>f Find files"
