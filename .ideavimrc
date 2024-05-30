@@ -26,15 +26,15 @@ set relativenumber
 
 "" Plugins & related settings.
 
-" Vim Movement in the Project View
+" Vim movement in the file tree.
 " -> https://github.com/JetBrains/ideavim/wiki/NERDTree-support
 set NERDTree
 
-" Emulate vim-surround. Commands: ys, cs, ds
+" Emulate vim-surround. Commands: ys, cs, ds.
 " -> https://github.com/tpope/vim-surround/blob/master/doc/surround.txt
 set surround
 
-" Add text object for arguments: aA (around arguments), iA (inside arguments)
+" Add text object for arguments: aa (around arguments), ia (inside arguments).
 set argtextobj
 
 "" Mappings.
@@ -79,12 +79,12 @@ vnoremap ; :action EditorSelectWord<CR>
 vnoremap , :action EditorUnSelectWord<CR>
 
 " Replace multiple successive whitespaces with a single space.
-nnoremap d<space> f<space>diwi<space><esc>
-nnoremap c<space> f<space>diwi<space>
+nnoremap d<SPACE> f<SPACE>diwi<SPACE><ESC>
+nnoremap c<SPACE> f<SPACE>diwi<SPACE>
 
 " Deleting and pasting without replacing the unnamed register.
-vnoremap <leader>d "_d
-vnoremap <leader>p "_dP
+vnoremap <LEADER>d "_d
+vnoremap <LEADER>p "_dP
 
 " Commenting.
 nnoremap gb :action CommentByBlockComment<CR>
