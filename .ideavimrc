@@ -93,6 +93,10 @@ vnoremap gb :action CommentByBlockComment<CR>
 nnoremap gc :action CommentByLineComment<CR>
 vnoremap gc :action CommentByLineComment<CR>
 
+" Formatting.
+nnoremap = :action ReformatCode<CR>
+vnoremap = :action ReformatCode<CR>
+
 " Get function parameter info.
 nnoremap <C-s> :action ParameterInfo<CR>
 inoremap <C-s> :action ParameterInfo<CR>
