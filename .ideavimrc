@@ -2,13 +2,16 @@
 
 "" Options.
 
+" Use <C-x> as an IDE shortcut for Ataman in all modes.
+sethandler <C-x> a:ide
+
 " Use Intellij's line joining behaviour
 set ideajoin
 
-" <SPC> as the leader key
+" <SPACE> as the leader key. Although it's not really used.
 let mapleader = " "
 
-" Show Current Vim Mode
+" Show Current Vim Mode.
 set showmode
 
 " Search as characters are entered.
@@ -61,9 +64,6 @@ nnoremap g4 :action GotoHarpoon4<CR>
 nnoremap <C-d> <C-d>zz
 nnoremap <C-u> <C-u>zz
 
-" AceJump.
-nnoremap <LEADER>f :action AceAction<CR>
-
 "" [] navigation.
 nnoremap [f :action MethodUp<CR>
 nnoremap ]f :action MethodDown<CR>
@@ -83,8 +83,8 @@ nnoremap d<SPACE> f<SPACE>diwi<SPACE><ESC>
 nnoremap c<SPACE> f<SPACE>diwi<SPACE>
 
 " Deleting and pasting without replacing the unnamed register.
-vnoremap <LEADER>d "_d
-vnoremap <LEADER>p "_dP
+vnoremap <SPACE>d "_d
+vnoremap <SPACE>p "_dP
 
 " Commenting.
 nnoremap gb :action CommentByBlockComment<CR>
@@ -96,7 +96,3 @@ vnoremap gc :action CommentByLineComment<CR>
 " Formatting.
 nnoremap = :action ReformatCode<CR>
 vnoremap = :action ReformatCode<CR>
-
-" Get function parameter info.
-nnoremap <C-s> :action ParameterInfo<CR>
-inoremap <C-s> :action ParameterInfo<CR>
