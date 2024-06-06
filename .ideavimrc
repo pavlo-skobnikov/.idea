@@ -96,3 +96,35 @@ vnoremap gc :action CommentByLineComment<CR>
 " Formatting.
 nnoremap = :action ReformatCode<CR>
 vnoremap = :action ReformatCode<CR>
+
+" Refactoring et al.
+nnoremap K :action QuickJavaDoc<CR>
+vnoremap K :action QuickJavaDoc<CR>
+
+nnoremap T :action ExpressionTypeInfo<CR>
+vnoremap T :action ExpressionTypeInfo<CR>
+
+nnoremap <C-S-k> :action ParameterInfo<CR>
+vnoremap <C-S-k> :action ParameterInfo<CR>
+inoremap <C-S-k> :action ParameterInfo<CR>
+
+nnoremap crr :action Refactorings.QuickListPopupAction<CR>
+nnoremap crl :action ShowIntentionActions<CR>
+nnoremap crn :action RenameElement<CR>
+nnoremap crh :action HighlightUsagesInFile<CR>
+nnoremap crf :action ShowErrorDescription<CR>
+nnoremap cro :action OptimizeImports<CR>
+
+nnoremap gr :action ShowUsages<CR>
+nnoremap gd :action GotoDeclaration<CR>
+
+nnoremap glt :action GotoTypeDeclaration<CR>
+nnoremap gli :action GotoImplementation<CR>
+nnoremap gla :action InspectCode<CR>
+nnoremap gld :action ActivateProblemsViewToolWindow<CR>
+nnoremap glS :action GotoSuperMethod<CR>
+nnoremap glc :action HierarchyGroup<CR>
+
+nnoremap glsd :action FileStructurePopup<CR>
+nnoremap glsw :action GotoSymbol<CR>
+nnoremap glsc :action GotoClass<CR>
