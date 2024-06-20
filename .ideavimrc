@@ -1,15 +1,13 @@
 " -> https://github.com/JetBrains/ideavim/wiki
 
-"" Options.
+"" BASIC CONFIGURATION ""
 
-" Use <C-x> as an IDE shortcut for Ataman in all modes.
-sethandler <C-x> a:ide
-
-" Use Intellij's line joining behaviour
-set ideajoin
-
-" <SPACE> as the leader key. Although it's not really used.
+" <SPACE> as the leader key.
+" NOTE: Needs to be defined early.
 let mapleader = " "
+
+" Use Intellij's line joining behaviour.
+set ideajoin
 
 " Show Current Vim Mode.
 set showmode
@@ -21,24 +19,53 @@ set incsearch
 set hlsearch
 
 " Case-sensitive search only on present upper letters.
-set ignorecase
 set smartcase
 
 " Relative numbers only club.
 set relativenumber
 
-"" Plugins & related settings.
+" Keep the current mode when triggering refactoring actions.
+set idearefactormode
 
-" Vim movement in the file tree.
+"" PLUGINS ""
+
+" Vim movement in the file explorer.
 " -> https://github.com/JetBrains/ideavim/wiki/NERDTree-support
-set NERDTree
+Plug 'preservim/nerdtree'
 
-" Emulate vim-surround. Commands: ys, cs, ds.
+" Operate on matching characters:
+" - ys => Add.
+" - cs => Change.
+" - ds => Delete.
 " -> https://github.com/tpope/vim-surround/blob/master/doc/surround.txt
-set surround
+Plug 'tpope/vim-surround'
 
-" Add text object for arguments: aa (around arguments), ia (inside arguments).
-set argtextobj
+" Easily comment w/ `gc...`.
+Plug 'tpope/vim-commentary'
+
+" [count]/{Visual} + REGISTER + gr = Replace from register.
+Plug 'vim-scripts/ReplaceWithRegister'
+
+" Add text object for arguments: a-/ia (around/inside argument).
+Plug 'vim-scripts/argtextobj.vim'
+
+" Exchange text objects with `cx...`.
+Plug 'tommcdo/vim-exchange'
+
+" Add the entire buffer text object: a-/ie (around/inside the (entire) buffer contents).
+Plug 'kana/vim-textobj-entire'
+
+" Highlights what has just been yanked.
+Plug 'machakann/vim-highlightedyank'
+
+" Improvements to `{` and `}` motions to include blank lines as well.
+Plug 'dbakker/vim-paragraph-motion'
+
+" Adds and indentation level object: a-/ii (around/inside indentation level).
+Plug 'michaeljsmith/vim-indent-object'
+
+" Explain mappings on the fly.
+set which-key
 
 "" Mappings.
 
@@ -128,3 +155,6 @@ nnoremap glc :action HierarchyGroup<CR>
 nnoremap glsd :action FileStructurePopup<CR>
 nnoremap glsw :action GotoSymbol<CR>
 nnoremap glsc :action GotoClass<CR>
+
+nnoremap <LEADER> :action LeaderAction<CR>
+
