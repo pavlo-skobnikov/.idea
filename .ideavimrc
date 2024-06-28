@@ -25,7 +25,7 @@ set smartcase
 set relativenumber
 
 " Keep the current mode when triggering refactoring actions.
-set idearefactormode
+set idearefactormode=keep
 
 "" PLUGINS ""
 
@@ -67,6 +67,9 @@ Plug 'michaeljsmith/vim-indent-object'
 " Explain mappings on the fly.
 set which-key
 
+" Don't wait to show the key mappings.
+set notimeout
+
 "" Mappings.
 
 " Remove highlights on <ESC>
@@ -80,12 +83,6 @@ nnoremap <C-l> <C-w>l
 
 " File explorer.
 nnoremap - :action SelectInProjectView<CR>
-
-"" Go to Harpoon marks.
-nnoremap g1 :action GotoHarpoon1<CR>
-nnoremap g2 :action GotoHarpoon2<CR>
-nnoremap g3 :action GotoHarpoon3<CR>
-nnoremap g4 :action GotoHarpoon4<CR>
 
 " Center screen on movement.
 nnoremap <C-d> <C-d>zz
@@ -101,6 +98,9 @@ nnoremap [d :action GotoPreviousError<CR>
 nnoremap ]c :action VcsShowNextChangeMarker<CR>
 nnoremap [c :action VcsShowPrevChangeMarker<CR>
 
+nnoremap ]q :action NextOccurence<CR>
+nnoremap [q :action PreviousOccurence<CR>
+
 " Increase/decrease selection.
 vnoremap ; :action EditorSelectWord<CR>
 vnoremap , :action EditorUnSelectWord<CR>
@@ -109,10 +109,6 @@ vnoremap , :action EditorUnSelectWord<CR>
 nnoremap d<SPACE> f<SPACE>diwi<SPACE><ESC>
 nnoremap c<SPACE> f<SPACE>diwi<SPACE>
 
-" Deleting and pasting without replacing the unnamed register.
-vnoremap <SPACE>d "_d
-vnoremap <SPACE>p "_dP
-
 " Commenting.
 nnoremap gb :action CommentByBlockComment<CR>
 vnoremap gb :action CommentByBlockComment<CR>
@@ -120,11 +116,7 @@ vnoremap gb :action CommentByBlockComment<CR>
 nnoremap gc :action CommentByLineComment<CR>
 vnoremap gc :action CommentByLineComment<CR>
 
-" Formatting.
-nnoremap = :action ReformatCode<CR>
-vnoremap = :action ReformatCode<CR>
-
-" Refactoring et al.
+" LSP information.
 nnoremap K :action QuickJavaDoc<CR>
 vnoremap K :action QuickJavaDoc<CR>
 
@@ -135,26 +127,6 @@ nnoremap <C-S-k> :action ParameterInfo<CR>
 vnoremap <C-S-k> :action ParameterInfo<CR>
 inoremap <C-S-k> :action ParameterInfo<CR>
 
-nnoremap crr :action Refactorings.QuickListPopupAction<CR>
-nnoremap crl :action ShowIntentionActions<CR>
-nnoremap crn :action RenameElement<CR>
-nnoremap crh :action HighlightUsagesInFile<CR>
-nnoremap crf :action ShowErrorDescription<CR>
-nnoremap cro :action OptimizeImports<CR>
-
-nnoremap gr :action ShowUsages<CR>
-nnoremap gd :action GotoDeclaration<CR>
-
-nnoremap glt :action GotoTypeDeclaration<CR>
-nnoremap gli :action GotoImplementation<CR>
-nnoremap gla :action InspectCode<CR>
-nnoremap gld :action ActivateProblemsViewToolWindow<CR>
-nnoremap glS :action GotoSuperMethod<CR>
-nnoremap glc :action HierarchyGroup<CR>
-
-nnoremap glsd :action FileStructurePopup<CR>
-nnoremap glsw :action GotoSymbol<CR>
-nnoremap glsc :action GotoClass<CR>
-
+" Trigger Ataman.
 nnoremap <LEADER> :action LeaderAction<CR>
-
+vnoremap <LEADER> :action LeaderAction<CR>
