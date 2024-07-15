@@ -1,13 +1,39 @@
 " -> https://github.com/JetBrains/ideavim/wiki
 
-"" BASIC CONFIGURATION ""
 
-" <SPACE> as the leader key.
-" NOTE: Needs to be defined early.
+"" Basic configurations.
+" -> https://raw.githubusercontent.com/wiki/JetBrains/ideavim/set-commands.md
+
+" Set space key as the global leader.
+" NOTE: Should be set early on in the configuration.
 let mapleader = " "
 
-" Use Intellij's line joining behaviour.
-set ideajoin
+" Never timeout when waiting for the next key of a keymap.
+set notimeout
+
+" Remember command-line history.
+set history=50
+
+" Match w/ `%`.
+set matchpairs
+
+" Show line numbers.
+set number
+
+" Show line numbers relative to the current line.
+set relativenumber
+
+" Ignore case in search patterns.
+set ignorecase
+
+" Use case sensitive search if any character in the pattern is uppercase.
+set smartcase
+
+" Wrap around the buffer when searching.
+set wrapscan
+
+" Use the system's clipboard as the main one.
+set clipboard+=unnamed
 
 " Show Current Vim Mode.
 set showmode
@@ -18,36 +44,17 @@ set incsearch
 " Highlight search results.
 set hlsearch
 
-" Case-sensitive search only on present upper letters.
-set smartcase
+" Use the IntelliJ's "smart join" feature for `J` motion.
+set ideajoin=true
 
-" Relative numbers only club.
-set relativenumber
+" Switch to the visual mode after selecting a refactor action.
+set idearefactormode=visual
 
-" Keep the current mode when triggering refactoring actions.
-set idearefactormode=keep
 
-"" PLUGINS ""
-
-" Vim movement in the file explorer.
-" -> https://github.com/JetBrains/ideavim/wiki/NERDTree-support
-Plug 'preservim/nerdtree'
-
-" Operate on matching characters:
-" - ys => Add.
-" - cs => Change.
-" - ds => Delete.
-" -> https://github.com/tpope/vim-surround/blob/master/doc/surround.txt
-Plug 'tpope/vim-surround'
-
-" Easily comment w/ `gc...`.
-Plug 'tpope/vim-commentary'
+"" Plugins and plugin-specific configurations.
 
 " [count]/{Visual} + REGISTER + gr = Replace from register.
 Plug 'vim-scripts/ReplaceWithRegister'
-
-" Add text object for arguments: a-/ia (around/inside argument).
-Plug 'vim-scripts/argtextobj.vim'
 
 " Exchange text objects with `cx...`.
 Plug 'tommcdo/vim-exchange'
@@ -55,25 +62,44 @@ Plug 'tommcdo/vim-exchange'
 " Add the entire buffer text object: a-/ie (around/inside the (entire) buffer contents).
 Plug 'kana/vim-textobj-entire'
 
-" Highlights what has just been yanked.
-Plug 'machakann/vim-highlightedyank'
-
 " Improvements to `{` and `}` motions to include blank lines as well.
 Plug 'dbakker/vim-paragraph-motion'
 
 " Adds and indentation level object: a-/ii (around/inside indentation level).
 Plug 'michaeljsmith/vim-indent-object'
 
-" Explain mappings on the fly.
+" Text objects for arguments and parameters.
+Plug 'vim-scripts/argtextobj.vim'
+
+" Handle more arguments than just simple parentheses.
+let g:argtextobj_pairs = '(:),{:},[:],<:>'
+
+" Highlight yanked text w/o having to use visual mode.
+Plug 'machakann/vim-highlightedyank'
+
+" GOTO commenting.
+Plug 'tpope/vim-commentary'
+
+" Surround text objects w/ paired characters.
+Plug 'tpope/vim-surround'
+
+" Navigate file tree w/ vim keys.
+Plug 'preservim/nerdtree'
+
+" Show the actions of a keymap.
 set which-key
 
-" Don't wait to show the key mappings.
-set notimeout
+" Show the actions pop-up after 200ms.
+let g:WhichKey_DefaultDelay = 200
 
-"" Mappings.
+" Show the default vim actions implemented by IdeaVim.
+let g:WhichKey_ShowVimActions = 'true'
 
-" Remove highlights on <ESC>
-nnoremap <esc> :noh<CR>
+
+"" Basic custom mappings.
+
+" Remove highlights on Escape.
+nnoremap <Esc> :<C-u>nohl<CR><Esc>
 
 " Easy window navigation
 nnoremap <C-h> <C-w>h
@@ -81,52 +107,516 @@ nnoremap <C-j> <C-w>j
 nnoremap <C-k> <C-w>k
 nnoremap <C-l> <C-w>l
 
-" File explorer.
-nnoremap - :action SelectInProjectView<CR>
-
-" Center screen on movement.
+" Center screen on page movement.
 nnoremap <C-d> <C-d>zz
 nnoremap <C-u> <C-u>zz
 
-"" [] navigation.
-nnoremap [f :action MethodUp<CR>
-nnoremap ]f :action MethodDown<CR>
-
-nnoremap ]d :action GotoNextError<CR>
-nnoremap [d :action GotoPreviousError<CR>
-
-nnoremap ]c :action VcsShowNextChangeMarker<CR>
-nnoremap [c :action VcsShowPrevChangeMarker<CR>
-
-nnoremap ]q :action NextOccurence<CR>
-nnoremap [q :action PreviousOccurence<CR>
+" Open project tree w/ focus on the currently opened file.
+nmap - <Action>(NERDTreeFind)
 
 " Increase/decrease selection.
-vnoremap ; :action EditorSelectWord<CR>
-vnoremap , :action EditorUnSelectWord<CR>
+vmap ; <Action>(EditorSelectWord)
+vmap , <Action>(EditorUnSelectWord)
 
 " Replace multiple successive whitespaces with a single space.
 nnoremap d<SPACE> f<SPACE>diwi<SPACE><ESC>
+let g:WhichKeyDesc_DeleteExtraSpaces = 'd<Space> Delete extra spaces'
+
 nnoremap c<SPACE> f<SPACE>diwi<SPACE>
+let g:WhichKeyDesc_ChangeExtraSpaces = 'c<Space> Change extra spaces'
 
-" Commenting.
-nnoremap gb :action CommentByBlockComment<CR>
-vnoremap gb :action CommentByBlockComment<CR>
+" Add a new line above/below the current line.
+nnoremap [<Space> mzO<Esc>`z
+vnoremap [<Space> <Esc>O<Esc>gv
+let g:WhichKeyDesc_AddLineAbove = '[<Space> Add line above'
 
-nnoremap gc :action CommentByLineComment<CR>
-vnoremap gc :action CommentByLineComment<CR>
+nnoremap ]<Space> mzo<Esc>`z
+vnoremap [<Space> <Esc>O<Esc>gv
+let g:WhichKeyDesc_AddLineBelow = ']<Space> Add line below'
 
-" LSP information.
-nnoremap K :action QuickJavaDoc<CR>
-vnoremap K :action QuickJavaDoc<CR>
+" Toggle fold.
+nmap za <Action>(ExpandCollapseToggleAction)
+let g:WhichKeyDesc_ExpandCollapseToggleAction = 'za Toggle fold'
 
-nnoremap T :action ExpressionTypeInfo<CR>
-vnoremap T :action ExpressionTypeInfo<CR>
 
-nnoremap <C-S-k> :action ParameterInfo<CR>
-vnoremap <C-S-k> :action ParameterInfo<CR>
-inoremap <C-S-k> :action ParameterInfo<CR>
+"" [ and ] pair mappings.
 
-" Trigger Ataman.
-nnoremap <LEADER> :action LeaderAction<CR>
-vnoremap <LEADER> :action LeaderAction<CR>
+" Easily navigate between searched items.
+nmap [q <Action>(PreviousOccurence)
+let g:WhichKeyDesc_PreviousOccurence = '[q Previous qflist'
+
+nmap ]q <Action>(NextOccurence)
+let g:WhichKeyDesc_NextOccurence = ']q Next qflist'
+
+" Jump between hunks.
+nmap [c <Action>(VcsShowPrevChangeMarker)
+let g:WhichKeyDesc_VcsShowPrevChangeMarker = '[c Previous change'
+
+nmap ]c <Action>(VcsShowNextChangeMarker)
+let g:WhichKeyDesc_VcsShowNextChangeMarker = ']c Next change'
+
+" Jump between diagnostics.
+nmap [d <Action>(GotoPreviousError)
+let g:WhichKeyDesc_GotoPreviousError = '[d Previous diagnostic'
+
+nmap ]d <Action>(GotoNextError)
+let g:WhichKeyDesc_GotoNextError = ']d Next diagnostic'
+
+" Jump between functions.
+nmap [f <Action>(MethodUp)
+let g:WhichKeyDesc_MethodUp = '[f Previous function'
+
+nmap ]f <Action>(MethodDown)
+let g:WhichKeyDesc_MethodDown = ']f Next function'
+
+
+"" LSP mappings.
+
+" Quick documentation peek.
+nmap K <Action>QuickJavaDoc
+vmap K <Action>QuickJavaDoc
+
+" Resolve type information of the expression.
+nmap T <Action>ExpressionTypeInfo
+vmap T <Action>ExpressionTypeInfo
+
+" Show parameter information.
+nmap <C-S-k> <Action>ParameterInfo
+vmap <C-S-k> <Action>ParameterInfo
+imap <C-S-k> <Action>ParameterInfo
+
+" +actions
+let g:WhichKeyDesc_GotoLspActionsLeader = 'ga +actions'
+
+nmap gar <Action>(Refactorings.QuickListPopupAction)
+let g:WhichKeyDesc_GotoLspActionsLeader_Refactorings.QuickListPopupAction = 'gar Refactor action'
+
+nmap gal <Action>(ShowIntentionActions)
+let g:WhichKeyDesc_GotoLspActionsLeader_ShowIntentionActions = 'gal Code lens'
+
+nmap gan <Action>(RenameElement)
+let g:WhichKeyDesc_GotoLspActionsLeader_RenameElement = 'gan Rename'
+
+nmap gah <Action>(HighlightUsagesInFile)
+let g:WhichKeyDesc_GotoLspActionsLeader_HighlightUsagesInFile = 'gah Highlight symbol'
+
+nmap gaf <Action>(ShowErrorDescription)
+let g:WhichKeyDesc_GotoLspActionsLeader_ShowErrorDescription = 'gaf Float diagnostics'
+
+nmap gao <Action>(OptimizeImports)
+let g:WhichKeyDesc_GotoLspActionsLeader_OptimizeImports = 'gao Optimize imports'
+
+nmap gli <Action>(InspectCode)
+let g:WhichKeyDesc_GotoLspActionsLeader_InspectCode = 'gli Inspect code'
+
+
+" +definitions
+let g:WhichKeyDesc_GotoLspDeclarationsLeader = 'ga +declarations'
+
+nmap gdr <Action>(ShowUsages)
+let g:WhichKeyDesc_GotoLspDeclarationsLeader_ShowUsages = 'gdr References'
+
+nmap gdd <Action>(GotoDeclaration)
+let g:WhichKeyDesc_GotoLspDeclarationsLeader_GotoDeclaration = 'gdd Definition'
+
+nmap gdt <Action>(GotoTypeDeclaration)
+let g:WhichKeyDesc_GotoLspDeclarationsLeader_GotoTypeDeclaration = 'gdt Type declaration'
+
+nmap gdi <Action>(GotoImplementation)
+let g:WhichKeyDesc_GotoLspDeclarationsLeader_GotoImplementation = 'gdi Implementation'
+
+nmap gds <Action>(GotoSuperMethod)
+let g:WhichKeyDesc_GotoLspDeclarationsLeader_GotoSuperMethod = 'gds Super'
+
+
+" +symbols
+let g:WhichKeyDesc_GotoLspSymbolsLeader = 'ga +symbols'
+
+nmap gsd <Action>(FileStructurePopup)
+let g:WhichKeyDesc_GotoLspSymbolsLeader_FileStructurePopup = 'gsd Document symbols'
+
+nmap gsw <Action>(GotoSymbol)
+let g:WhichKeyDesc_GotoLspSymbolsLeader_GotoSymbol = 'gsw Workspace symbols'
+
+nmap gsc <Action>(GotoClass)
+let g:WhichKeyDesc_GotoLspSymbolsLeader_GotoClass = 'gsc Class symbols'
+
+nmap gse <Action>(ActivateProblemsViewToolWindow)
+let g:WhichKeyDesc_GotoLspSymbolsLeader_ActivateProblemsViewToolWindow = 'gse Errors'
+
+nmap gsh <Action>(HierarchyGroup)
+let g:WhichKeyDesc_GotoLspSymbolsLeader_HierarchyGroup = 'gsh Hierarchies'
+
+
+"" Leader mappings.
+" +leader
+
+map <Leader>/ <Action>(FindInPath)
+let g:WhichKeyDesc_FindInPath = '<leader>/ Search project'
+
+map <Leader>. <Action>(GotoFile)
+let g:WhichKeyDesc_GotoFile = '<leader>. Find project file'
+
+map <Leader><CR> <Action>(Bookmarks)
+let g:WhichKeyDesc_Bookmarks = '<leader>⏎ Jump to bookmark'
+
+map <Leader>< <Action>(Switcher)
+let g:WhichKeyDesc_Switcher = '<leader>< Switch buffer'
+
+map <Leader>~ <Action>(JumpToLastWindow)
+let g:WhichKeyDesc_JumpToLastWindow = '<leader>~ Toggle last popup'
+
+map <Leader>= <Action>(ReformatCode)
+let g:WhichKeyDesc_ReformatCode = '<leader>= Reformat code'
+
+map <Leader>s <Action>(SearchEverywhere)
+let g:WhichKeyDesc_SearchEverywhere = '<leader>s Search everywhere'
+
+map <Leader>x <Action>(GotoAction)
+let g:WhichKeyDesc_GotoAction = '<leader>x Find command'
+
+map <Leader>a <Action>(AddToHarpoon)
+let g:WhichKeyDesc_AddToHarpoon = '<leader>a Add to harpoon'
+
+map <Leader>l <Action>(ShowHarpoon)
+let g:WhichKeyDesc_ShowHarpoon = '<leader>l Show harpoon list'
+
+map <Leader>1 <Action>(GotoHarpoon1)
+let g:WhichKeyDesc_GotoHarpoon1 = '<leader>1 Show harpoon list'
+
+map <Leader>2 <Action>(GotoHarpoon2)
+let g:WhichKeyDesc_GotoHarpoon2 = '<leader>2 Show harpoon list'
+
+map <Leader>3 <Action>(GotoHarpoon3)
+let g:WhichKeyDesc_GotoHarpoon3 = '<leader>3 Show harpoon list'
+
+map <Leader>4 <Action>(GotoHarpoon4)
+let g:WhichKeyDesc_GotoHarpoon4 = '<leader>4 Show harpoon list'
+
+map <Leader>5 <Action>(GotoHarpoon5)
+let g:WhichKeyDesc_GotoHarpoon5 = '<leader>5 Show harpoon list'
+
+
+"
+" +buffer
+
+let g:WhichKeyDesc_BufferLeader = '<leader>b +buffer'
+
+map <Leader>bd <Action>(CloseContent)
+let g:WhichKeyDesc_BufferLeader_CloseContent = '<leader>bd Kill buffer'
+
+map <Leader>bk <Action>(CloseAllEditors)
+let g:WhichKeyDesc_BufferLeader_CloseAllEditors = '<leader>bk Kill all buffers'
+
+map <Leader>bn <Action>(NewScratchBuffer)
+let g:WhichKeyDesc_BufferLeader_NewScratchBuffer = '<leader>bn New empty buffer'
+
+map <Leader>bo <Action>(CloseAllEditorsButActive)
+let g:WhichKeyDesc_BufferLeader_CloseAllEditorsButActive = '<leader>bo Kill other buffers'
+
+
+"
+" +code
+
+let g:WhichKeyDesc_CodeLeader = '<leader>c +code'
+
+map <Leader>cc <Action>(CompileDirty)
+let g:WhichKeyDesc_CodeLeader_CompileDirty = '<leader>cc Compile (dirty)'
+
+map <Leader>cC <Action>(Compile)
+let g:WhichKeyDesc_CodeLeader_Compile = '<leader>cC Recompile'
+
+map <Leader>cb <Action>(ActivateBuildToolWindow)
+let g:WhichKeyDesc_CodeLeader_ActivateBuildToolWindow = '<leader>cb Build'
+
+map <Leader>cM <Action>(MakeModule)
+let g:WhichKeyDesc_CodeLeader_MakeModule = '<leader>cc Compile Current Module'
+
+map <Leader>cp <Action>(ActivatePackageSearchToolWindow)
+let g:WhichKeyDesc_CodeLeader_ActivatePackageSearchToolWindow = '<leader>cp Packages'
+
+map <Leader>cr <Action>(CompileProject)
+let g:WhichKeyDesc_CodeLeader_CompileProject = '<leader>cr Rebuild project'
+
+" +gradle
+let g:WhichKeyDesc_CodeGradleLeader = '<leader>cg +gradle'
+
+map <Leader>cge <Action>(Gradle.ExecuteTask)
+let g:WhichKeyDesc_CodeGradleLeader_Gradle_ExecuteTask = '<leader>cge Execute task'
+
+map <Leader>cgg <Action>(ActivateGradleToolWindow)
+let g:WhichKeyDesc_CodeGradleLeader_ActivateGradleToolWindow = '<leader>cgg Gradle tool window'
+
+map <Leader>cgr <Action>(ExternalSystem_RefreshAllProjects)
+let g:WhichKeyDesc_CodeGradleLeader_ExternalSystem_RefreshAllProjects = '<leader>cgr Reload all projects'
+
+" +maven
+let g:WhichKeyDesc_CodeMavenLeader = '<leader>cm +maven'
+
+map <Leader>cme <Action>(Maven.ExecuteGoal)
+let g:WhichKeyDesc_CodeMavenLeader_Maven_ExecuteGoal = '<leader>cme Execute goal'
+
+map <Leader>cmm <Action>(ActivateMavenToolWindow)
+let g:WhichKeyDesc_CodeMavenLeader_ActivateMavenToolWindow = '<leader>cmm Maven tool window'
+
+map <Leader>cmr <Action>(Maven.Reimport)
+let g:WhichKeyDesc_CodeMavenLeader_Maven_Reimport = '<leader>cmr Reload all projects'
+
+
+"
+" +debug
+
+let g:WhichKeyDesc_DebugLeader = '<leader>d +debug'
+
+map <Leader>c <Action>(Debugger.RemoveAllBreakpointsInFile)
+let g:WhichKeyDesc_DebugLeader_Debugger_RemoveAllBreakpointsInFile = '<leader>c Clear all breakpoints'
+
+map <Leader>d <Action>(ActivateDebugToolWindow)
+let g:WhichKeyDesc_DebugLeader_ActivateDebugToolWindow = '<leader>d Debug Tool Window'
+
+map <Leader>o <Action>(KotlinConsoleREPL)
+let g:WhichKeyDesc_DebugLeader_KotlinConsoleREPL = '<leader>o Open Kotlin REPL'
+
+" +breakpoints
+let g:WhichKeyDesc_DebugBreakpointsLeader = '<leader>db +breakpoints'
+
+map <Leader>dba <Action>(ToggleBreakpointAction)
+let g:WhichKeyDesc_DebugBreakpointsLeader_ToggleBreakpointAction = '<leader>dba Toggle action'
+
+map <Leader>dbb <Action>(ToggleLineBreakpoint)
+let g:WhichKeyDesc_DebugBreakpointsLeader_ToggleLineBreakpoint = '<leader>dbb Toggle simple'
+
+map <Leader>dbe <Action>(ToggleBreakpointEnabled)
+let g:WhichKeyDesc_DebugBreakpointsLeader_ToggleBreakpointEnabled = '<leader>dbe Toggle enabled'
+
+map <Leader>dbf <Action>(ToggleFieldBreakpoint)
+let g:WhichKeyDesc_DebugBreakpointsLeader_ToggleFieldBreakpoint = '<leader>dbf Toggle field'
+
+map <Leader>dbm <Action>(ToggleMethodBreakpoint)
+let g:WhichKeyDesc_DebugBreakpointsLeader_ToggleMethodBreakpoint = '<leader>dbm Toggle method'
+
+map <Leader>dbv <Action>(ViewBreakpoints)
+let g:WhichKeyDesc_DebugBreakpointsLeader_ViewBreakpoints = '<leader>dbv View all'
+
+" +run
+let g:WhichKeyDesc_DebugRunLeader = '<leader>dr +run'
+
+map <Leader>drc <Action>(DebugClass)
+let g:WhichKeyDesc_DebugRunLeader_DebugClass = '<leader>drc Class'
+
+map <Leader>drd <Action>(Debug)
+let g:WhichKeyDesc_DebugRunLeader_Debug = '<leader>drd Debug'
+
+map <Leader>drf <Action>(ChooseDebugConfiguration)
+let g:WhichKeyDesc_DebugRunLeader_ChooseDebugConfiguration = '<leader>drf Find configuration'
+
+map <Leader>drr <Action>(Resume)
+let g:WhichKeyDesc_DebugRunLeader_Resume = '<leader>drr Resume'
+
+" +step
+let g:WhichKeyDesc_DebugStepLeader = '<leader>ds +step'
+
+map <leader>dsc <Action>(RunToCursor)
+let g:WhichKeyDesc_DebugStepLeader_RunToCursor = '<leader>dsc To cursor'
+
+map <leader>dsi <Action>(StepInto)
+let g:WhichKeyDesc_DebugStepLeader_StepInto = '<leader>dsi Into'
+
+map <leader>dsn <Action>(StepOver)
+let g:WhichKeyDesc_DebugStepLeader_StepOver = '<leader>dsn Over'
+
+map <leader>dso <Action>(StepOut)
+let g:WhichKeyDesc_DebugStepLeader_StepOut = '<leader>dso Out'
+
+"
+" +file
+
+let g:WhichKeyDesc_FileLeader = '<leader>f +file'
+
+map <Leader>ff <Action>(GotoFile)
+let g:WhichKeyDesc_FileLeader_GotoFile = '<leader>ff Find file'
+
+map <Leader>fr <Action>(RecentFiles)
+let g:WhichKeyDesc_FileLeader_RecentFiles = '<leader>fr Recent files'
+
+map <Leader>fy <Action>(CopyAbsolutePath)
+let g:WhichKeyDesc_FileLeader_CopyAbsolutePath = '<leader>fy Copy filename'
+
+map <Leader>fR <Action>(RefactoringMenu)
+let g:WhichKeyDesc_FileLeader_RefactoringMenu = '<leader>fR Rename/move file'
+
+
+"
+" +git
+
+let g:WhichKeyDesc_GitLeader = '<leader>g +git'
+
+map <Leader>g' <Action>(GitHub.MainMenu)
+let g:WhichKeyDesc_GitLeader_GitHub_MainMenu = "<leader>g' GitHub menu"
+
+map <Leader>g. <Action>(Git.FileActions)
+let g:WhichKeyDesc_GitLeader_Git_FileActions = '<leader>g. Git file actions'
+
+map <Leader>g/ <Action>(Git.Menu)
+let g:WhichKeyDesc_GitLeader_Git_Menu = '<leader>g/ Git menu'
+
+map <Leader>gg <Action>(Git.Commit.Stage)
+let g:WhichKeyDesc_GitLeader_Git_Commit_Stage = '<leader>gg Git window'
+
+map <Leader>gb <Action>(Git.Branches)
+let g:WhichKeyDesc_GitLeader_Git_Branches = '<leader>gb Switch branch'
+
+map <Leader>gr <Action>(Vcs.RollbackChangedLines)
+let g:WhichKeyDesc_GitLeader_Vcs_RollbackChangedLines = '<leader>gr Revert hunk'
+
+map <Leader>gs <Action>(Vcs.Show.Shelf)
+let g:WhichKeyDesc_GitLeader_Vcs_Show_Shelf = '<leader>gs Status'
+
+map <Leader>gt <Action>(Vcs.ShowTabbedFileHistory)
+let g:WhichKeyDesc_GitLeader_Vcs_ShowTabbedFileHistory = '<leader>gt Time machine'
+
+map <Leader>gB <Action>(Annotate)
+let g:WhichKeyDesc_GitLeader_Annotate = '<leader>gB Blame'
+
+map <Leader>gC <Action>(Vcs.VcsClone)
+let g:WhichKeyDesc_GitLeader_Vcs_VcsClone = '<leader>gC Clone'
+
+map <Leader>gF <Action>(Git.Fetch)
+let g:WhichKeyDesc_GitLeader_Git_Fetch = '<leader>gF Fetch'
+
+map <Leader>gS <Action>(Git.Add)
+let g:WhichKeyDesc_GitLeader_Git_Add = '<leader>gS Git stage file'
+
+" +create
+let g:WhichKeyDesc_GitCreateLeader = '<leader>gc +create'
+
+map <Leader>gcb <Action>(Git.CreateNewBranch)
+let g:WhichKeyDesc_GitCreateLeader_Git_CreateNewBranch = '<leader>gcb Branch'
+
+map <Leader>gcp <Action>(Github.Create.Pull.Request)
+let g:WhichKeyDesc_GitCreateLeader_Github_Create_Pull_Request = '<leader>gcp Pull request'
+
+map <Leader>gcr <Action>(Git.Init)
+let g:WhichKeyDesc_GitCreateLeader_Git_Init = '<leader>gcr Initialize repo'
+
+map <Leader>gcR <Action>(Vcs.VcsClone)
+let g:WhichKeyDesc_GitCreateLeader_Vcs_VcsClone = '<leader>gcR Clone repo'
+
+" +list
+let g:WhichKeyDesc_GitListLeader = '<leader>gl +list'
+
+map <Leader>glp <Action>(Github.View.Pull.Request)
+let g:WhichKeyDesc_GitListLeader_Github_View_Pull_Request = '<leader>glp List pull requests'
+
+" +open
+let g:WhichKeyDesc_GitOpenLeader = '<leader>go +open'
+
+map <Leader>goo <Action>(Github.Open.In.Browser)
+let g:WhichKeyDesc_GitOpenLeader_Github_Open_In_Browser = '<leader>goo Browse file or region'
+
+map <Leader>gop <Action>(com.github.shiraji.findpullrequest.action.FindPullRequestAction)
+let g:WhichKeyDesc_GitOpenLeader_com_github_shiraji_findpullrequest_action_FindPullRequestAction = '<leader>gop Browse a pull request'
+
+
+"
+" +help
+
+let g:WhichKeyDesc_HelpLeader = '<leader>h +help'
+
+map <Leader>he <Action>(ActivateEventLogToolWindow)
+let g:WhichKeyDesc_HelpLeader_ActivateEventLogToolWindow = '<leader>he Show Event Log'
+
+map <Leader>hr <Action>(IdeaVim.ReloadVimRc.reload)
+let g:WhichKeyDesc_HelpLeader_IdeaVim_ReloadVimRc_reload = '<leader>hr Reload IdeaVim config'
+
+map <Leader>ht <Action>(ChangeLaf)
+let g:WhichKeyDesc_HelpLeader_ChangeLaf = '<leader>ht Change theme'
+
+map <Leader>ha <Action>(VimFindActionIdAction)
+let g:WhichKeyDesc_HelpLeader_VimFindActionIdAction = '<leader>ha Toggle action ID tracking'
+
+"
+" +open
+
+let g:WhichKeyDesc_OpenLeader = '<leader>o +open'
+
+nmap <Leader>of <Action>(EditSourceInNewWindow)
+let g:WhichKeyDesc_OpenLeader_EditSourceInNewWindow = '<leader>of New window for buffer'
+
+nmap <Leader>oF <Action>(OpenProjectWindows)
+let g:WhichKeyDesc_OpenLeader_OpenProjectWindows = '<leader>oF Select window'
+
+noremap <Leader>op <Action>(NERDTreeToggle)
+let g:WhichKeyDesc_OpenLeader_NERDTreeToggle = '<leader>op Toggle Project View'
+
+nmap <Leader>oo <Action>(RevealIn)
+let g:WhichKeyDesc_OpenLeader_RevealIn = '<leader>oo Reveal in Finder'
+
+nmap <Leader>ot <Action>(ActivateTerminalToolWindow)
+let g:WhichKeyDesc_OpenLeader_ActivateTerminalToolWindow = '<leader>ot Open terminal'
+
+nmap <Leader>oT <Action>(Terminal.OpenInTerminal)
+let g:WhichKeyDesc_OpenLeader_Terminal_OpenInTerminal = '<leader>oT Open terminal here'
+
+
+"
+" +project
+
+let g:WhichKeyDesc_ProjectLeader = '<leader>p +project'
+
+map <Leader>p! <Action>(RunAnything)
+let g:WhichKeyDesc_ProjectLeader_RunAnything = '<leader>p! Run project command or configuration'
+
+map <Leader>pr <Action>(Run)
+let g:WhichKeyDesc_ProjectLeader_Run = '<leader>pR Run project'
+
+map <Leader>pR <Action>(ChooseRunConfiguration)
+let g:WhichKeyDesc_ChooseRunConfiguration = '<leader>pR Recent run configurations'
+
+map <Leader>pi <Action>(InvalidateCaches)
+let g:WhichKeyDesc_ProjectLeader_InvalidateCaches = '<leader>pi Invalidate project cache'
+
+map <Leader>pp <Action>(ManageRecentProjects)
+let g:WhichKeyDesc_ProjectLeader_ManageRecentProjects = '<leader>pp Switch projects'
+
+map <Leader>pt <Action>(ActivateTODOToolWindow)
+let g:WhichKeyDesc_ProjectLeader_ActivateTODOToolWindow = '<leader>pt Show TODOs'
+
+map <Leader>pT <Action>(ActivateRunToolWindow)
+let g:WhichKeyDesc_ActivateRunToolWindow = '<leader>pr Run tool window'
+
+map <Leader>pl <Action>(Rerun)
+let g:WhichKeyDesc_Rerun = '<leader>pl Rerun latest configuration'
+
+map <Leader>pt <Action>(RerunTests)
+let g:WhichKeyDesc_RerunTests = '<leader>pt Rerun tests'
+
+
+"
+" +toggle
+
+let g:WhichKeyDesc_ToggleLeader = '<leader>t +toggle'
+
+map <Leader>tb <Action>(TogglePresentationMode)
+let g:WhichKeyDesc_ToggleLeader_TogglePresentationMode = '<leader>tb Presentation Mode'
+
+map <Leader>tl <Action>(EditorToggleShowLineNumbers)
+let g:WhichKeyDesc_ToggleLeader_EditorToggleShowLineNumbers = '<leader>tl Line numbers'
+
+map <Leader>tr <Action>(ToggleReadOnlyAttribute)
+let g:WhichKeyDesc_ToggleLeader_ToggleReadOnlyAttribute = '<leader>tr Read-only mode'
+
+map <Leader>tw <Action>(EditorToggleUseSoftWraps)
+let g:WhichKeyDesc_ToggleLeader_EditorToggleUseSoftWraps = '<leader>tw Soft line wrapping'
+
+map <Leader>tz <Action>(ToggleDistractionFreeMode)
+let g:WhichKeyDesc_ToggleLeader_ToggleDistractionFreeMode = '<leader>tz Distraction free mode'
+
+map <Leader>tZ <Action>(ToggleZenMode)
+let g:WhichKeyDesc_ToggleLeader_ToggleZenMode = '<leader>tZ Zen mode'
+
+map <Leader>tF <Action>(ToggleFullScreen)
+let g:WhichKeyDesc_ToggleLeader_ToggleFullScreen = '<leader>tF Fullscreen'
+
+map <Leader>tw <Action>(HideAllWindows)
+let g:WhichKeyDesc_ToggleLeader_HideAllWindows = '<leader>tw Tool windows'
