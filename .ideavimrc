@@ -275,6 +275,9 @@ let g:WhichKeyDesc_SearchEverywhere = '<leader>s Search everywhere'
 map <Leader>x <Action>(GotoAction)
 let g:WhichKeyDesc_GotoAction = '<leader>x Find command'
 
+map <Leader>B <Action>(ShowBookmarks)
+let g:WhichKeyDesc_ShowBookmarks = '<leader>B Show bookmarks'
+
 map <Leader>a <Action>(AddToHarpoon)
 let g:WhichKeyDesc_AddToHarpoon = '<leader>a Add to harpoon'
 
