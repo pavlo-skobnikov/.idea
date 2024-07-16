@@ -1,4 +1,4 @@
-# IdeaVim Configuration README
+# ideavim
 
 My personal configuration for the IdeaVim plugin in IntelliJ IDEA.
 
