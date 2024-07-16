@@ -48,7 +48,7 @@ set hlsearch
 set ideajoin=true
 
 " Switch to the visual mode after selecting a refactor action.
-set idearefactormode=visual
+set idearefactormode=keep
 
 
 "" Plugins and plugin-specific configurations.
