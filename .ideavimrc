@@ -89,6 +89,9 @@ Plug 'preservim/nerdtree'
 " Jump around the buffer with ease.
 set easymotion
 
+" Only have the English language layout in NORMAL mode.
+set keep-english-in-normal-and-restore-in-insert
+
 " Show the actions of a keymap.
 set which-key
 
@@ -280,27 +283,6 @@ let g:WhichKeyDesc_GotoAction = '<leader>x Find command'
 
 map <Leader>B <Action>(ShowBookmarks)
 let g:WhichKeyDesc_ShowBookmarks = '<leader>B Show bookmarks'
-
-map <Leader>a <Action>(AddToHarpoon)
-let g:WhichKeyDesc_AddToHarpoon = '<leader>a Add to harpoon'
-
-map <Leader>l <Action>(ShowHarpoon)
-let g:WhichKeyDesc_ShowHarpoon = '<leader>l Show harpoon list'
-
-map <Leader>1 <Action>(GotoHarpoon1)
-let g:WhichKeyDesc_GotoHarpoon1 = '<leader>1 Show harpoon list'
-
-map <Leader>2 <Action>(GotoHarpoon2)
-let g:WhichKeyDesc_GotoHarpoon2 = '<leader>2 Show harpoon list'
-
-map <Leader>3 <Action>(GotoHarpoon3)
-let g:WhichKeyDesc_GotoHarpoon3 = '<leader>3 Show harpoon list'
-
-map <Leader>4 <Action>(GotoHarpoon4)
-let g:WhichKeyDesc_GotoHarpoon4 = '<leader>4 Show harpoon list'
-
-map <Leader>5 <Action>(GotoHarpoon5)
-let g:WhichKeyDesc_GotoHarpoon5 = '<leader>5 Show harpoon list'
 
 
 "
