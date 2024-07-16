@@ -86,6 +86,9 @@ Plug 'tpope/vim-surround'
 " Navigate file tree w/ vim keys.
 Plug 'preservim/nerdtree'
 
+" Jump around the buffer with ease.
+set easymotion
+
 " Show the actions of a keymap.
 set which-key
 
@@ -537,6 +540,7 @@ let g:WhichKeyDesc_HelpLeader_ChangeLaf = '<leader>ht Change theme'
 
 map <Leader>ha <Action>(VimFindActionIdAction)
 let g:WhichKeyDesc_HelpLeader_VimFindActionIdAction = '<leader>ha Toggle action ID tracking'
+
 
 "
 " +open
