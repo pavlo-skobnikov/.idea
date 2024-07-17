@@ -12,7 +12,6 @@ For the configuration to fully work, you need to have the following plugins inst
 - [IdeaVim](https://plugins.jetbrains.com/plugin/164-ideavim) (duh!).
 - [AceJump](https://plugins.jetbrains.com/plugin/7086-acejump).
 - [EasyMotion](https://plugins.jetbrains.com/plugin/13360-ideavim-easymotion).
-- [IdeaVimExtension](https://plugins.jetbrains.com/plugin/9615-ideavimextension): Auto-switching to English in NORMAL mode.
 - [Which-Key](https://plugins.jetbrains.com/plugin/15976-which-key).
 
 ## Mentions

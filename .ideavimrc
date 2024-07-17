@@ -89,9 +89,6 @@ Plug 'preservim/nerdtree'
 " Jump around the buffer with ease.
 set easymotion
 
-" Only have the English language layout in NORMAL mode.
-set keep-english-in-normal-and-restore-in-insert
-
 " Show the actions of a keymap.
 set which-key
 
