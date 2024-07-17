@@ -115,7 +115,7 @@ nnoremap <C-d> <C-d>zz
 nnoremap <C-u> <C-u>zz
 
 " Open project tree w/ focus on the currently opened file.
-nmap - <Action>(NERDTreeFind)
+nmap - <Action>(SelectInProjectView)
 
 " Increase/decrease selection.
 vmap ; <Action>(EditorSelectWord)
@@ -542,8 +542,8 @@ let g:WhichKeyDesc_OpenLeader_EditSourceInNewWindow = '<leader>of New window for
 nmap <Leader>oF <Action>(OpenProjectWindows)
 let g:WhichKeyDesc_OpenLeader_OpenProjectWindows = '<leader>oF Select window'
 
-noremap <Leader>op <Action>(NERDTreeToggle)
-let g:WhichKeyDesc_OpenLeader_NERDTreeToggle = '<leader>op Toggle Project View'
+noremap <Leader>op <Action>(ActivateProjectToolWindow)
+let g:WhichKeyDesc_OpenLeader_ActivateProjectToolWindow = '<leader>op Toggle Project View'
 
 nmap <Leader>oo <Action>(RevealIn)
 let g:WhichKeyDesc_OpenLeader_RevealIn = '<leader>oo Reveal in Finder'
