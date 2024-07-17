@@ -470,7 +470,17 @@ map <Leader>gF <Action>(Git.Fetch)
 let g:WhichKeyDesc_GitLeader_Git_Fetch = '<leader>gF Fetch'
 
 map <Leader>gS <Action>(Git.Add)
-let g:WhichKeyDesc_GitLeader_Git_Add = '<leader>gS Git stage file'
+let g:WhichKeyDesc_GitLeader_Git_Add = '<leader>gS Stage file'
+
+map <Leader>gp <Action>(Vcs_UpdateProject)
+let g:WhichKeyDesc_GitLeader_Vcs_UpdateProject = '<leader>gp Pull'
+
+map <Leader>gP <Action>(Vcs_Push)
+let g:WhichKeyDesc_GitLeader_Vcs_Push = '<leader>gP Push'
+
+map <Leader>gL <Action>(Vcs.Show.Log)
+let g:WhichKeyDesc_GitLeader_Vcs_Show_Log = '<leader>gL Log'
+
 
 " +create
 let g:WhichKeyDesc_GitCreateLeader = '<leader>gc +create'
