@@ -188,52 +188,52 @@ nmap <C-S-k> <Action>ParameterInfo
 vmap <C-S-k> <Action>ParameterInfo
 imap <C-S-k> <Action>ParameterInfo
 
-" +actions
-let g:WhichKeyDesc_GotoLspActionsLeader = 'ga +actions'
+" Quick GOTOs.
+nmap gd <Action>(GotoDeclaration)
+let g:WhichKeyDesc_GotoLspDeclarationsLeader_GotoDeclaration = 'gd Definition'
 
-nmap gar <Action>(Refactorings.QuickListPopupAction)
-let g:WhichKeyDesc_GotoLspActionsLeader_Refactorings.QuickListPopupAction = 'gar Refactor action'
+nmap gD <Action>(GotoTypeDeclaration)
+let g:WhichKeyDesc_GotoLspDeclarationsLeader_GotoTypeDeclaration = 'gD Type declaration'
 
-nmap gal <Action>(ShowIntentionActions)
-let g:WhichKeyDesc_GotoLspActionsLeader_ShowIntentionActions = 'gal Code lens'
+nmap gR <Action>(ShowUsages)
+let g:WhichKeyDesc_GotoLspDeclarationsLeader_ShowUsages = 'gR References'
 
-nmap gan <Action>(RenameElement)
-let g:WhichKeyDesc_GotoLspActionsLeader_RenameElement = 'gan Rename'
+nmap gI <Action>(GotoImplementation)
+let g:WhichKeyDesc_GotoLspDeclarationsLeader_GotoImplementation = 'gI Implementation'
 
-nmap gah <Action>(HighlightUsagesInFile)
-let g:WhichKeyDesc_GotoLspActionsLeader_HighlightUsagesInFile = 'gah Highlight symbol'
+nmap gS <Action>(GotoSuperMethod)
+let g:WhichKeyDesc_GotoLspDeclarationsLeader_GotoSuperMethod = 'gS Super'
 
-nmap gaf <Action>(ShowErrorDescription)
-let g:WhichKeyDesc_GotoLspActionsLeader_ShowErrorDescription = 'gaf Float diagnostics'
+" +lsp
+let g:WhichKeyDesc_GotoLspActionsLeader = 'gl +lsp'
 
-nmap gao <Action>(OptimizeImports)
-let g:WhichKeyDesc_GotoLspActionsLeader_OptimizeImports = 'gao Optimize imports'
+nmap glr <Action>(Refactorings.QuickListPopupAction)
+let g:WhichKeyDesc_GotoLspActionsLeader_Refactorings.QuickListPopupAction = 'glr Refactor action'
+
+nmap gla <Action>(ShowIntentionActions)
+let g:WhichKeyDesc_GotoLspActionsLeader_ShowIntentionActions = 'gla Contextual actions'
+
+nmap gln <Action>(RenameElement)
+let g:WhichKeyDesc_GotoLspActionsLeader_RenameElement = 'gln Rename'
+
+nmap glh <Action>(HighlightUsagesInFile)
+let g:WhichKeyDesc_GotoLspActionsLeader_HighlightUsagesInFile = 'glh Highlight symbol'
+
+nmap glf <Action>(ShowErrorDescription)
+let g:WhichKeyDesc_GotoLspActionsLeader_ShowErrorDescription = 'glf Float diagnostics'
+
+nmap glo <Action>(OptimizeImports)
+let g:WhichKeyDesc_GotoLspActionsLeader_OptimizeImports = 'glo Optimize imports'
 
 nmap gli <Action>(InspectCode)
 let g:WhichKeyDesc_GotoLspActionsLeader_InspectCode = 'gli Inspect code'
 
 
-" +definitions
-let g:WhichKeyDesc_GotoLspDeclarationsLeader = 'ga +declarations'
-
-nmap gdr <Action>(ShowUsages)
-let g:WhichKeyDesc_GotoLspDeclarationsLeader_ShowUsages = 'gdr References'
-
-nmap gdd <Action>(GotoDeclaration)
-let g:WhichKeyDesc_GotoLspDeclarationsLeader_GotoDeclaration = 'gdd Definition'
-
-nmap gdt <Action>(GotoTypeDeclaration)
-let g:WhichKeyDesc_GotoLspDeclarationsLeader_GotoTypeDeclaration = 'gdt Type declaration'
-
-nmap gdi <Action>(GotoImplementation)
-let g:WhichKeyDesc_GotoLspDeclarationsLeader_GotoImplementation = 'gdi Implementation'
-
-nmap gds <Action>(GotoSuperMethod)
-let g:WhichKeyDesc_GotoLspDeclarationsLeader_GotoSuperMethod = 'gds Super'
-
-
 " +symbols
-let g:WhichKeyDesc_GotoLspSymbolsLeader = 'ga +symbols'
+let g:WhichKeyDesc_GotoLspSymbolsLeader = 'gs +symbols'
+
+nmap gsr <Action>(FindUsages)
+let g:WhichKeyDesc_GotoLspSymbolsLeader_FindUsages = 'gsr Document symbols'
 
 nmap gsd <Action>(FileStructurePopup)
 let g:WhichKeyDesc_GotoLspSymbolsLeader_FileStructurePopup = 'gsd Document symbols'
