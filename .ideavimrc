@@ -120,54 +120,54 @@ vmap , <Action>(EditorUnSelectWord)
 
 " Replace multiple successive whitespaces with a single space.
 nnoremap d<SPACE> f<SPACE>diwi<SPACE><ESC>
-let g:WhichKeyDesc_DeleteExtraSpaces = 'd<Space> Delete extra spaces'
+let g:WhichKeyDesc_DeleteExtraSpaces = 'd<Space> delete-extra-spaces'
 
 nnoremap c<SPACE> f<SPACE>diwi<SPACE>
-let g:WhichKeyDesc_ChangeExtraSpaces = 'c<Space> Change extra spaces'
+let g:WhichKeyDesc_ChangeExtraSpaces = 'c<Space> change-extra-spaces'
 
 " Add a new line above/below the current line.
 nnoremap [<Space> mzO<Esc>`z
 vnoremap [<Space> <Esc>O<Esc>gv
-let g:WhichKeyDesc_AddLineAbove = '[<Space> Add line above'
+let g:WhichKeyDesc_AddLineAbove = '[<Space> add-line-above'
 
 nnoremap ]<Space> mzo<Esc>`z
 vnoremap [<Space> <Esc>O<Esc>gv
-let g:WhichKeyDesc_AddLineBelow = ']<Space> Add line below'
+let g:WhichKeyDesc_AddLineBelow = ']<Space> add-line-below'
 
 " Toggle fold.
 nmap za <Action>(ExpandCollapseToggleAction)
-let g:WhichKeyDesc_ExpandCollapseToggleAction = 'za Toggle fold'
+let g:WhichKeyDesc_ExpandCollapseToggleAction = 'za toggle-fold'
 
 
 "" [ and ] pair mappings.
 
 " Easily navigate between searched items.
 nmap [q <Action>(PreviousOccurence)
-let g:WhichKeyDesc_PreviousOccurence = '[q Previous qflist'
+let g:WhichKeyDesc_PreviousOccurence = '[q previous-qflist'
 
 nmap ]q <Action>(NextOccurence)
-let g:WhichKeyDesc_NextOccurence = ']q Next qflist'
+let g:WhichKeyDesc_NextOccurence = ']q next-qflist'
 
 " Jump between hunks.
 nmap [c <Action>(VcsShowPrevChangeMarker)
-let g:WhichKeyDesc_VcsShowPrevChangeMarker = '[c Previous change'
+let g:WhichKeyDesc_VcsShowPrevChangeMarker = '[c previous-change'
 
 nmap ]c <Action>(VcsShowNextChangeMarker)
-let g:WhichKeyDesc_VcsShowNextChangeMarker = ']c Next change'
+let g:WhichKeyDesc_VcsShowNextChangeMarker = ']c next-change'
 
 " Jump between diagnostics.
 nmap [d <Action>(GotoPreviousError)
-let g:WhichKeyDesc_GotoPreviousError = '[d Previous diagnostic'
+let g:WhichKeyDesc_GotoPreviousError = '[d previous-diagnostic'
 
 nmap ]d <Action>(GotoNextError)
-let g:WhichKeyDesc_GotoNextError = ']d Next diagnostic'
+let g:WhichKeyDesc_GotoNextError = ']d next-diagnostic'
 
 " Jump between functions.
 nmap [f <Action>(MethodUp)
-let g:WhichKeyDesc_MethodUp = '[f Previous function'
+let g:WhichKeyDesc_MethodUp = '[f previous-function'
 
 nmap ]f <Action>(MethodDown)
-let g:WhichKeyDesc_MethodDown = ']f Next function'
+let g:WhichKeyDesc_MethodDown = ']f next-function'
 
 
 "" LSP mappings.
@@ -187,68 +187,68 @@ imap <C-S-k> <Action>ParameterInfo
 
 " Quick GOTOs.
 nmap gd <Action>(GotoDeclaration)
-let g:WhichKeyDesc_GotoLspDeclarationsLeader_GotoDeclaration = 'gd Definition'
+let g:WhichKeyDesc_GotoLeader_GotoDeclaration = 'gd definition'
 
 nmap gD <Action>(GotoTypeDeclaration)
-let g:WhichKeyDesc_GotoLspDeclarationsLeader_GotoTypeDeclaration = 'gD Type declaration'
+let g:WhichKeyDesc_GotoLeader_GotoTypeDeclaration = 'gD type-declaration'
 
 nmap gR <Action>(ShowUsages)
-let g:WhichKeyDesc_GotoLspDeclarationsLeader_ShowUsages = 'gR References'
+let g:WhichKeyDesc_GotoLeader_ShowUsages = 'gR references'
 
 nmap gI <Action>(GotoImplementation)
-let g:WhichKeyDesc_GotoLspDeclarationsLeader_GotoImplementation = 'gI Implementation'
+let g:WhichKeyDesc_GotoLeader_GotoImplementation = 'gI implementation'
 
 nmap gS <Action>(GotoSuperMethod)
-let g:WhichKeyDesc_GotoLspDeclarationsLeader_GotoSuperMethod = 'gS Super'
+let g:WhichKeyDesc_GotoLeader_GotoSuperMethod = 'gS super'
 
 " +lsp
-let g:WhichKeyDesc_GotoLspActionsLeader = 'gl +lsp'
+let g:WhichKeyDesc_GotoLspActionsLeader = 'gl +[l]sp'
 
 nmap glr <Action>(Refactorings.QuickListPopupAction)
-let g:WhichKeyDesc_GotoLspActionsLeader_Refactorings.QuickListPopupAction = 'glr Refactor action'
+let g:WhichKeyDesc_GotoLspActionsLeader_Refactorings.QuickListPopupAction = 'glr refactor-action'
 
 nmap gla <Action>(ShowIntentionActions)
-let g:WhichKeyDesc_GotoLspActionsLeader_ShowIntentionActions = 'gla Contextual actions'
+let g:WhichKeyDesc_GotoLspActionsLeader_ShowIntentionActions = 'gla contextual-actions'
 
 nmap gln <Action>(RenameElement)
-let g:WhichKeyDesc_GotoLspActionsLeader_RenameElement = 'gln Rename'
+let g:WhichKeyDesc_GotoLspActionsLeader_RenameElement = 'gln rename'
 
 nmap glh <Action>(HighlightUsagesInFile)
-let g:WhichKeyDesc_GotoLspActionsLeader_HighlightUsagesInFile = 'glh Highlight symbol'
+let g:WhichKeyDesc_GotoLspActionsLeader_HighlightUsagesInFile = 'glh highlight-symbol'
 
 nmap glf <Action>(ShowErrorDescription)
-let g:WhichKeyDesc_GotoLspActionsLeader_ShowErrorDescription = 'glf Float diagnostics'
+let g:WhichKeyDesc_GotoLspActionsLeader_ShowErrorDescription = 'glf float-diagnostics'
 
 nmap glo <Action>(OptimizeImports)
-let g:WhichKeyDesc_GotoLspActionsLeader_OptimizeImports = 'glo Optimize imports'
+let g:WhichKeyDesc_GotoLspActionsLeader_OptimizeImports = 'glo optimize-imports'
 
 nmap gli <Action>(InspectCode)
-let g:WhichKeyDesc_GotoLspActionsLeader_InspectCode = 'gli Inspect code'
+let g:WhichKeyDesc_GotoLspActionsLeader_InspectCode = 'gli inspect-code'
 
 
 " +symbols
-let g:WhichKeyDesc_GotoLspSymbolsLeader = 'gs +search'
+let g:WhichKeyDesc_GotoLspSymbolsLeader = 'gs +[s]earch'
 
 nmap gsr <Action>(FindUsages)
-let g:WhichKeyDesc_GotoLspSymbolsLeader_FindUsages = 'gsr Document symbols'
+let g:WhichKeyDesc_GotoLspSymbolsLeader_FindUsages = 'gsr references-to-qflist'
 
 nmap gsd <Action>(FileStructurePopup)
-let g:WhichKeyDesc_GotoLspSymbolsLeader_FileStructurePopup = 'gsd Document symbols'
+let g:WhichKeyDesc_GotoLspSymbolsLeader_FileStructurePopup = 'gsd document-symbols'
 
 nmap gsw <Action>(GotoSymbol)
-let g:WhichKeyDesc_GotoLspSymbolsLeader_GotoSymbol = 'gsw Workspace symbols'
+let g:WhichKeyDesc_GotoLspSymbolsLeader_GotoSymbol = 'gsw workspace-symbols'
 
 nmap gsc <Action>(GotoClass)
-let g:WhichKeyDesc_GotoLspSymbolsLeader_GotoClass = 'gsc Class symbols'
+let g:WhichKeyDesc_GotoLspSymbolsLeader_GotoClass = 'gsc class-symbols'
 
 nmap gse <Action>(ActivateProblemsViewToolWindow)
-let g:WhichKeyDesc_GotoLspSymbolsLeader_ActivateProblemsViewToolWindow = 'gse Errors'
+let g:WhichKeyDesc_GotoLspSymbolsLeader_ActivateProblemsViewToolWindow = 'gse errors'
 
 nmap gsq <Action>(ActivateFindToolWindow)
 let g:WhichKeyDesc_GotoLspSymbolsLeader_ActivateFindToolWindow = 'gsq qflist'
 
 nmap gsh <Action>(HierarchyGroup)
-let g:WhichKeyDesc_GotoLspSymbolsLeader_HierarchyGroup = 'gsh Hierarchies'
+let g:WhichKeyDesc_GotoLspSymbolsLeader_HierarchyGroup = 'gsh hierarchies'
 
 
 "" Leader mappings.
@@ -273,10 +273,10 @@ let g:WhichKeyDesc_JumpToLastWindow = '<leader>~ show-last-popup'
 "
 " +buffer
 
-let g:WhichKeyDesc_BufferLeader = '<leader>b +buffer'
+let g:WhichKeyDesc_BufferLeader = '<leader>b +[b]uffer'
 
-map <Leader>< <Action>(Switcher)
-let g:WhichKeyDesc_Switcher = '<leader>< Switch buffer'
+map <Leader>bb <Action>(Switcher)
+let g:WhichKeyDesc_Switcher = '<leader>bb switch-buffers'
 
 " +buffer-delete
 let g:WhichKeyDesc_BufferDeleteLeader = '<leader>bd +buffer-[d]elete'
