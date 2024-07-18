@@ -230,7 +230,7 @@ let g:WhichKeyDesc_GotoLspActionsLeader_InspectCode = 'gli Inspect code'
 
 
 " +symbols
-let g:WhichKeyDesc_GotoLspSymbolsLeader = 'gs +symbols'
+let g:WhichKeyDesc_GotoLspSymbolsLeader = 'gs +search'
 
 nmap gsr <Action>(FindUsages)
 let g:WhichKeyDesc_GotoLspSymbolsLeader_FindUsages = 'gsr Document symbols'
@@ -246,6 +246,9 @@ let g:WhichKeyDesc_GotoLspSymbolsLeader_GotoClass = 'gsc Class symbols'
 
 nmap gse <Action>(ActivateProblemsViewToolWindow)
 let g:WhichKeyDesc_GotoLspSymbolsLeader_ActivateProblemsViewToolWindow = 'gse Errors'
+
+nmap gsq <Action>(ActivateFindToolWindow)
+let g:WhichKeyDesc_GotoLspSymbolsLeader_ActivateFindToolWindow = 'gsq qflist'
 
 nmap gsh <Action>(HierarchyGroup)
 let g:WhichKeyDesc_GotoLspSymbolsLeader_HierarchyGroup = 'gsh Hierarchies'
