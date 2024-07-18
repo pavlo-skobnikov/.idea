@@ -257,32 +257,20 @@ let g:WhichKeyDesc_GotoLspSymbolsLeader_HierarchyGroup = 'gsh Hierarchies'
 "" Leader mappings.
 " +leader
 
+map <Leader><Leader> <Action>(SearchEverywhere)
+let g:WhichKeyDesc_SearchEverywhere = '<leader><leader> search-everything'
+
+map <Leader>: <Action>(GotoAction)
+let g:WhichKeyDesc_GotoAction = '<leader>: search-actions'
+
 map <Leader>/ <Action>(FindInPath)
-let g:WhichKeyDesc_FindInPath = '<leader>/ Search project'
-
-map <Leader>. <Action>(GotoFile)
-let g:WhichKeyDesc_GotoFile = '<leader>. Find project file'
-
-map <Leader><CR> <Action>(Bookmarks)
-let g:WhichKeyDesc_Bookmarks = '<leader>⏎ Jump to bookmark'
-
-map <Leader>< <Action>(Switcher)
-let g:WhichKeyDesc_Switcher = '<leader>< Switch buffer'
-
-map <Leader>~ <Action>(JumpToLastWindow)
-let g:WhichKeyDesc_JumpToLastWindow = '<leader>~ Toggle last popup'
+let g:WhichKeyDesc_FindInPath = '<leader>/ grep-files'
 
 map <Leader>= <Action>(ReformatCode)
-let g:WhichKeyDesc_ReformatCode = '<leader>= Reformat code'
+let g:WhichKeyDesc_ReformatCode = '<leader>= reformat-code'
 
-map <Leader>s <Action>(SearchEverywhere)
-let g:WhichKeyDesc_SearchEverywhere = '<leader>s Search everywhere'
-
-map <Leader>x <Action>(GotoAction)
-let g:WhichKeyDesc_GotoAction = '<leader>x Find command'
-
-map <Leader>B <Action>(ShowBookmarks)
-let g:WhichKeyDesc_ShowBookmarks = '<leader>B Show bookmarks'
+map <Leader>~ <Action>(JumpToLastWindow)
+let g:WhichKeyDesc_JumpToLastWindow = '<leader>~ show-last-popup'
 
 
 "
@@ -290,17 +278,29 @@ let g:WhichKeyDesc_ShowBookmarks = '<leader>B Show bookmarks'
 
 let g:WhichKeyDesc_BufferLeader = '<leader>b +buffer'
 
-map <Leader>bd <Action>(CloseContent)
-let g:WhichKeyDesc_BufferLeader_CloseContent = '<leader>bd Kill buffer'
+map <Leader>< <Action>(Switcher)
+let g:WhichKeyDesc_Switcher = '<leader>< Switch buffer'
 
-map <Leader>bk <Action>(CloseAllEditors)
-let g:WhichKeyDesc_BufferLeader_CloseAllEditors = '<leader>bk Kill all buffers'
+" +buffer-delete
+let g:WhichKeyDesc_BufferDeleteLeader = '<leader>bd +buffer-[d]elete'
 
-map <Leader>bn <Action>(NewScratchBuffer)
-let g:WhichKeyDesc_BufferLeader_NewScratchBuffer = '<leader>bn New empty buffer'
+map <Leader>bdc <Action>(CloseContent)
+let g:WhichKeyDesc_BufferDeleteLeader_CloseContent = '<leader>bd delete-current-buffer'
 
-map <Leader>bo <Action>(CloseAllEditorsButActive)
-let g:WhichKeyDesc_BufferLeader_CloseAllEditorsButActive = '<leader>bo Kill other buffers'
+map <Leader>bda <Action>(CloseAllEditors)
+let g:WhichKeyDesc_BufferDeleteLeader_CloseAllEditors = '<leader>bD delete-all-buffers'
+
+map <Leader>bdo <Action>(CloseAllEditorsButActive)
+let g:WhichKeyDesc_BufferDeleteLeader_CloseAllEditorsButActive = '<leader>bo delete-other-buffers'
+
+" +buffer-scratch
+let g:WhichKeyDesc_BufferScratchLeader = '<leader>bs +buffer-[s]cratch'
+
+map <Leader>bf <Action>(NewScratchFile)
+let g:WhichKeyDesc_BufferScratchLeader_NewScratchFile = '<leader>bf scratch-file'
+
+map <Leader>bb <Action>(NewScratchBuffer)
+let g:WhichKeyDesc_BufferScratchLeader_NewScratchBuffer = '<leader>bb scratch-buffer'
 
 
 "
@@ -416,22 +416,23 @@ let g:WhichKeyDesc_DebugStepLeader_StepOver = '<leader>dsn Over'
 map <leader>dso <Action>(StepOut)
 let g:WhichKeyDesc_DebugStepLeader_StepOut = '<leader>dso Out'
 
-"
-" +file
 
-let g:WhichKeyDesc_FileLeader = '<leader>f +file'
+"
+" +files
+
+let g:WhichKeyDesc_FileLeader = '<leader>f +[f]iles'
 
 map <Leader>ff <Action>(GotoFile)
-let g:WhichKeyDesc_FileLeader_GotoFile = '<leader>ff Find file'
+let g:WhichKeyDesc_FileLeader_GotoFile = '<leader>ff find-file'
 
 map <Leader>fr <Action>(RecentFiles)
-let g:WhichKeyDesc_FileLeader_RecentFiles = '<leader>fr Recent files'
+let g:WhichKeyDesc_FileLeader_RecentFiles = '<leader>fr recent-files'
+
+map <Leader>fa <Action>(RefactoringMenu)
+let g:WhichKeyDesc_FileLeader_RefactoringMenu = '<leader>fa file-actions'
 
 map <Leader>fy <Action>(CopyAbsolutePath)
-let g:WhichKeyDesc_FileLeader_CopyAbsolutePath = '<leader>fy Copy filename'
-
-map <Leader>fR <Action>(RefactoringMenu)
-let g:WhichKeyDesc_FileLeader_RefactoringMenu = '<leader>fR Rename/move file'
+let g:WhichKeyDesc_FileLeader_CopyAbsolutePath = '<leader>fy copy-file-name'
 
 
 "
@@ -532,6 +533,18 @@ let g:WhichKeyDesc_HelpLeader_ChangeLaf = '<leader>ht Change theme'
 
 map <Leader>ha <Action>(VimFindActionIdAction)
 let g:WhichKeyDesc_HelpLeader_VimFindActionIdAction = '<leader>ha Toggle action ID tracking'
+
+
+"
+" +marks
+
+let g:WhichKeyDesc_BookmarksLeader = '<leader>m +book[m]arks'
+
+map <Leader>mm <Action>(Bookmarks)
+let g:WhichKeyDesc_BookmarksLeader_Bookmarks = '<leader>mm bookmark-menu'
+
+map <Leader>mf <Action>(ShowBookmarks)
+let g:WhichKeyDesc_BookmarksLeader_ShowBookmarks = '<leader>mf find-bookmark'
 
 
 "
