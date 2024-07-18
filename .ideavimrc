@@ -303,121 +303,121 @@ let g:WhichKeyDesc_BufferScratchLeader_NewScratchBuffer = '<leader>bb scratch-bu
 "
 " +code
 
-let g:WhichKeyDesc_CodeLeader = '<leader>c +code'
+let g:WhichKeyDesc_CodeLeader = '<leader>c +[c]ode'
 
 map <Leader>cc <Action>(CompileDirty)
-let g:WhichKeyDesc_CodeLeader_CompileDirty = '<leader>cc Compile (dirty)'
+let g:WhichKeyDesc_CodeLeader_CompileDirty = '<leader>cc compile-(dirty)'
 
 map <Leader>cC <Action>(Compile)
-let g:WhichKeyDesc_CodeLeader_Compile = '<leader>cC Recompile'
+let g:WhichKeyDesc_CodeLeader_Compile = '<leader>cC recompile'
 
 map <Leader>cb <Action>(ActivateBuildToolWindow)
-let g:WhichKeyDesc_CodeLeader_ActivateBuildToolWindow = '<leader>cb Build'
+let g:WhichKeyDesc_CodeLeader_ActivateBuildToolWindow = '<leader>cb build'
 
 map <Leader>cM <Action>(MakeModule)
-let g:WhichKeyDesc_CodeLeader_MakeModule = '<leader>cc Compile Current Module'
+let g:WhichKeyDesc_CodeLeader_MakeModule = '<leader>cc compile-current-module'
 
 map <Leader>cp <Action>(ActivatePackageSearchToolWindow)
-let g:WhichKeyDesc_CodeLeader_ActivatePackageSearchToolWindow = '<leader>cp Packages'
+let g:WhichKeyDesc_CodeLeader_ActivatePackageSearchToolWindow = '<leader>cp packages'
 
 map <Leader>cr <Action>(CompileProject)
-let g:WhichKeyDesc_CodeLeader_CompileProject = '<leader>cr Rebuild project'
+let g:WhichKeyDesc_CodeLeader_CompileProject = '<leader>cr rebuild-project'
 
 " +gradle
-let g:WhichKeyDesc_CodeGradleLeader = '<leader>cg +gradle'
+let g:WhichKeyDesc_CodeGradleLeader = '<leader>cg +code-[g]radle'
 
 map <Leader>cge <Action>(Gradle.ExecuteTask)
-let g:WhichKeyDesc_CodeGradleLeader_Gradle_ExecuteTask = '<leader>cge Execute task'
+let g:WhichKeyDesc_CodeGradleLeader_Gradle_ExecuteTask = '<leader>cge execute-task'
 
 map <Leader>cgg <Action>(ActivateGradleToolWindow)
-let g:WhichKeyDesc_CodeGradleLeader_ActivateGradleToolWindow = '<leader>cgg Gradle tool window'
+let g:WhichKeyDesc_CodeGradleLeader_ActivateGradleToolWindow = '<leader>cgg gradle-tool-window'
 
 map <Leader>cgr <Action>(ExternalSystem_RefreshAllProjects)
-let g:WhichKeyDesc_CodeGradleLeader_ExternalSystem_RefreshAllProjects = '<leader>cgr Reload all projects'
+let g:WhichKeyDesc_CodeGradleLeader_ExternalSystem_RefreshAllProjects = '<leader>cgr reload-all-projects'
 
 " +maven
-let g:WhichKeyDesc_CodeMavenLeader = '<leader>cm +maven'
+let g:WhichKeyDesc_CodeMavenLeader = '<leader>cm +code-[m]aven'
 
 map <Leader>cme <Action>(Maven.ExecuteGoal)
-let g:WhichKeyDesc_CodeMavenLeader_Maven_ExecuteGoal = '<leader>cme Execute goal'
+let g:WhichKeyDesc_CodeMavenLeader_Maven_ExecuteGoal = '<leader>cme execute-goal'
 
 map <Leader>cmm <Action>(ActivateMavenToolWindow)
-let g:WhichKeyDesc_CodeMavenLeader_ActivateMavenToolWindow = '<leader>cmm Maven tool window'
+let g:WhichKeyDesc_CodeMavenLeader_ActivateMavenToolWindow = '<leader>cmm maven-tool-window'
 
 map <Leader>cmr <Action>(Maven.Reimport)
-let g:WhichKeyDesc_CodeMavenLeader_Maven_Reimport = '<leader>cmr Reload all projects'
+let g:WhichKeyDesc_CodeMavenLeader_Maven_Reimport = '<leader>cmr reload-all-projects'
 
 
 "
 " +debug
 
-let g:WhichKeyDesc_DebugLeader = '<leader>d +debug'
+let g:WhichKeyDesc_DebugLeader = '<leader>d +[d]ebug'
 
 map <Leader>c <Action>(Debugger.RemoveAllBreakpointsInFile)
-let g:WhichKeyDesc_DebugLeader_Debugger_RemoveAllBreakpointsInFile = '<leader>c Clear all breakpoints'
+let g:WhichKeyDesc_DebugLeader_Debugger_RemoveAllBreakpointsInFile = '<leader>c clear-all-breakpoints'
 
 map <Leader>d <Action>(ActivateDebugToolWindow)
-let g:WhichKeyDesc_DebugLeader_ActivateDebugToolWindow = '<leader>d Debug Tool Window'
+let g:WhichKeyDesc_DebugLeader_ActivateDebugToolWindow = '<leader>d debug-tool-window'
 
 map <Leader>o <Action>(KotlinConsoleREPL)
-let g:WhichKeyDesc_DebugLeader_KotlinConsoleREPL = '<leader>o Open Kotlin REPL'
+let g:WhichKeyDesc_DebugLeader_KotlinConsoleREPL = '<leader>o open-kotlin-repl'
 
 " +breakpoints
-let g:WhichKeyDesc_DebugBreakpointsLeader = '<leader>db +breakpoints'
+let g:WhichKeyDesc_DebugBreakpointsLeader = '<leader>db +debug-[b]reakpoints'
 
 map <Leader>dba <Action>(ToggleBreakpointAction)
-let g:WhichKeyDesc_DebugBreakpointsLeader_ToggleBreakpointAction = '<leader>dba Toggle action'
+let g:WhichKeyDesc_DebugBreakpointsLeader_ToggleBreakpointAction = '<leader>dba toggle-action'
 
 map <Leader>dbb <Action>(ToggleLineBreakpoint)
-let g:WhichKeyDesc_DebugBreakpointsLeader_ToggleLineBreakpoint = '<leader>dbb Toggle simple'
+let g:WhichKeyDesc_DebugBreakpointsLeader_ToggleLineBreakpoint = '<leader>dbb toggle-simple'
 
 map <Leader>dbe <Action>(ToggleBreakpointEnabled)
-let g:WhichKeyDesc_DebugBreakpointsLeader_ToggleBreakpointEnabled = '<leader>dbe Toggle enabled'
+let g:WhichKeyDesc_DebugBreakpointsLeader_ToggleBreakpointEnabled = '<leader>dbe toggle-enabled'
 
 map <Leader>dbf <Action>(ToggleFieldBreakpoint)
-let g:WhichKeyDesc_DebugBreakpointsLeader_ToggleFieldBreakpoint = '<leader>dbf Toggle field'
+let g:WhichKeyDesc_DebugBreakpointsLeader_ToggleFieldBreakpoint = '<leader>dbf toggle-field'
 
 map <Leader>dbm <Action>(ToggleMethodBreakpoint)
-let g:WhichKeyDesc_DebugBreakpointsLeader_ToggleMethodBreakpoint = '<leader>dbm Toggle method'
+let g:WhichKeyDesc_DebugBreakpointsLeader_ToggleMethodBreakpoint = '<leader>dbm toggle-method'
 
 map <Leader>dbv <Action>(ViewBreakpoints)
-let g:WhichKeyDesc_DebugBreakpointsLeader_ViewBreakpoints = '<leader>dbv View all'
+let g:WhichKeyDesc_DebugBreakpointsLeader_ViewBreakpoints = '<leader>dbv view-all'
 
 " +run
-let g:WhichKeyDesc_DebugRunLeader = '<leader>dr +run'
+let g:WhichKeyDesc_DebugRunLeader = '<leader>dr +debug-[r]un'
 
 map <Leader>drc <Action>(DebugClass)
-let g:WhichKeyDesc_DebugRunLeader_DebugClass = '<leader>drc Class'
+let g:WhichKeyDesc_DebugRunLeader_DebugClass = '<leader>drc debug-class'
 
 map <Leader>drd <Action>(Debug)
-let g:WhichKeyDesc_DebugRunLeader_Debug = '<leader>drd Debug'
+let g:WhichKeyDesc_DebugRunLeader_Debug = '<leader>drd run-debug'
 
 map <Leader>drf <Action>(ChooseDebugConfiguration)
-let g:WhichKeyDesc_DebugRunLeader_ChooseDebugConfiguration = '<leader>drf Find configuration'
+let g:WhichKeyDesc_DebugRunLeader_ChooseDebugConfiguration = '<leader>drf find-run-configuration'
 
 map <Leader>drr <Action>(Resume)
-let g:WhichKeyDesc_DebugRunLeader_Resume = '<leader>drr Resume'
+let g:WhichKeyDesc_DebugRunLeader_Resume = '<leader>drr resume-debug'
 
 " +step
-let g:WhichKeyDesc_DebugStepLeader = '<leader>ds +step'
+let g:WhichKeyDesc_DebugStepLeader = '<leader>ds +debug-[s]tep'
 
 map <leader>dsc <Action>(RunToCursor)
-let g:WhichKeyDesc_DebugStepLeader_RunToCursor = '<leader>dsc To cursor'
+let g:WhichKeyDesc_DebugStepLeader_RunToCursor = '<leader>dsc step-to-cursor'
 
 map <leader>dsi <Action>(StepInto)
-let g:WhichKeyDesc_DebugStepLeader_StepInto = '<leader>dsi Into'
+let g:WhichKeyDesc_DebugStepLeader_StepInto = '<leader>dsi step-into'
 
 map <leader>dsn <Action>(StepOver)
-let g:WhichKeyDesc_DebugStepLeader_StepOver = '<leader>dsn Over'
+let g:WhichKeyDesc_DebugStepLeader_StepOver = '<leader>dsn step-over'
 
 map <leader>dso <Action>(StepOut)
-let g:WhichKeyDesc_DebugStepLeader_StepOut = '<leader>dso Out'
+let g:WhichKeyDesc_DebugStepLeader_StepOut = '<leader>dso step-out'
 
 
 "
-" +files
+" +file
 
-let g:WhichKeyDesc_FileLeader = '<leader>f +[f]iles'
+let g:WhichKeyDesc_FileLeader = '<leader>f +[f]ile'
 
 map <Leader>ff <Action>(GotoFile)
 let g:WhichKeyDesc_FileLeader_GotoFile = '<leader>ff find-file'
