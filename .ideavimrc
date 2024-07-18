@@ -92,8 +92,8 @@ set which-key
 " Show the actions pop-up after 200ms.
 let g:WhichKey_DefaultDelay = 100
 
-" Show the default vim actions implemented by IdeaVim.
-let g:WhichKey_ShowVimActions = 'true'
+" Don't show the default vim actions implemented by IdeaVim.
+let g:WhichKey_ShowVimActions = 'false'
 
 
 "" Basic custom mappings.
