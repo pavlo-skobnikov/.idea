@@ -138,6 +138,15 @@ let g:WhichKeyDesc_AddLineBelow = ']<Space> add-line-below'
 nmap za <Action>(ExpandCollapseToggleAction)
 let g:WhichKeyDesc_ExpandCollapseToggleAction = 'za toggle-fold'
 
+" Insert system clipboard register.
+inoremap <C-i> <C-r>*
+
+" Paste w/o replacing the system clipboard register.
+vnoremap <Leader>P "_dP
+
+" Delete w/o replacing the system clipboard register.
+vnoremap <Leader>D "_d
+
 
 "" [ and ] pair mappings.
 
