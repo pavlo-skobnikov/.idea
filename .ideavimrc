@@ -86,9 +86,6 @@ Plug 'tpope/vim-surround'
 " Navigate file tree w/ vim keys.
 Plug 'preservim/nerdtree'
 
-" Jump around the buffer with ease.
-set easymotion
-
 " Show the actions of a keymap.
 set which-key
 

@@ -10,8 +10,6 @@ this configuration has evolved to suit my personal needs and preferences.
 
 For the configuration to fully work, you need to have the following plugins installed in IDEA:
 - [IdeaVim](https://plugins.jetbrains.com/plugin/164-ideavim) (duh!).
-- [AceJump](https://plugins.jetbrains.com/plugin/7086-acejump).
-- [EasyMotion](https://plugins.jetbrains.com/plugin/13360-ideavim-easymotion).
 - [Which-Key](https://plugins.jetbrains.com/plugin/15976-which-key).
 
 ## Mentions
