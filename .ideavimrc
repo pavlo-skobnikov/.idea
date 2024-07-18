@@ -93,7 +93,7 @@ set easymotion
 set which-key
 
 " Show the actions pop-up after 200ms.
-let g:WhichKey_DefaultDelay = 200
+let g:WhichKey_DefaultDelay = 100
 
 " Show the default vim actions implemented by IdeaVim.
 let g:WhichKey_ShowVimActions = 'true'
