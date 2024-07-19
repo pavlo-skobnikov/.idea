@@ -182,17 +182,17 @@ let g:WhichKeyDesc_MethodDown = ']f next-function'
 "" LSP mappings.
 
 " Quick documentation peek.
-nmap K <Action>QuickJavaDoc
-vmap K <Action>QuickJavaDoc
+nmap K <Action>(QuickJavaDoc)
+vmap K <Action>(QuickJavaDoc)
 
 " Resolve type information of the expression.
-nmap T <Action>ExpressionTypeInfo
-vmap T <Action>ExpressionTypeInfo
+nmap T <Action>(ExpressionTypeInfo)
+vmap T <Action>(ExpressionTypeInfo)
 
 " Show parameter information.
-nmap <C-S-k> <Action>ParameterInfo
-vmap <C-S-k> <Action>ParameterInfo
-imap <C-S-k> <Action>ParameterInfo
+nmap <C-S-k> <Action>(ParameterInfo)
+vmap <C-S-k> <Action>(ParameterInfo)
+imap <C-S-k> <Action>(ParameterInfo)
 
 " Quick GOTOs.
 nmap gd <Action>(GotoDeclaration)
@@ -233,6 +233,9 @@ let g:WhichKeyDesc_GotoLspActionsLeader_OptimizeImports = 'glo optimize-imports'
 
 nmap gli <Action>(InspectCode)
 let g:WhichKeyDesc_GotoLspActionsLeader_InspectCode = 'gli inspect-code'
+
+nmap glg <Action>(Generate)
+let g:WhichKeyDesc_GotoLspActionsLeader_Generate = 'glg generate'
 
 
 " +symbols
